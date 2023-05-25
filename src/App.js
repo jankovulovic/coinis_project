@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Header />
       <TopSection />
-      <BigList />
+      <BigList numberOfAlbums={5} />
       <Footer />
     </div>
   );
