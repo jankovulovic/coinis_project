@@ -1,0 +1,26 @@
+.container {
+  height: 400px;
+  width: 100%;
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 30px;
+  padding-top: 50px;
+  color: white;
+  background-color: blue;
+  gap: 30px;
+}
+
+.topText {
+  font-size: 60px;
+}
+
+.middleText {
+  font-size: 40px;
+}
+
+.bottomText {
+  font-size: 24px;
+}
