@@ -1,67 +1,52 @@
+import React from "react";
+
 import classes from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <>
-      <footer className={classes.footer}>
-        <div className={classes.footerTopReal}>
-          <div className={classes.footerTopLeft}>
-            <div className={classes.footerList}>
-              <h2>Section1</h2>
-              <ul>
-                <li>link1</li>
-                <li>link2</li>
-                <li>link3</li>
-                <li>link4</li>
-              </ul>
-            </div>
-            <div className={classes.footerList}>
-              <h2>Section2</h2>
-              <ul>
-                <li>link1</li>
-                <li>link2</li>
-                <li>link3</li>
-                <li>link4</li>
-              </ul>
-            </div>
-            <div className={classes.footerList}>
-              <h2>Section3</h2>
-              <ul>
-                <li>link1</li>
-                <li>link2</li>
-                <li>link3</li>
-                <li>link4</li>
-              </ul>
-            </div>
-            <div className={classes.footerList}>
-              <h2>Section4</h2>
-              <ul>
-                <li>link1</li>
-                <li>link2</li>
-                <li>link3</li>
-                <li>link4</li>
-              </ul>
-            </div>
+    <footer>
+      <div className={classes.topFooter}>
+        <div className={classes.topFooterLeft}>
+          <div className={classes.topSection}>
+            <div className={classes.title}>Section</div>
+            <div className={classes.links}>Home</div>
+            <div className={classes.links}>About us</div>
+            <div className={classes.links}>Contact</div>
+            <div className={classes.links}>List</div>
           </div>
-          <div className={classes.footerTopRight}>
-            <div className={classes.footerList}>
-              <h2>Section5</h2>
-              <div>random text</div>
-            </div>
-            <div>Forma</div>
+          <div className={classes.topSection}>
+            <div className={classes.title}>Section</div>
+            <div className={classes.links}>Home</div>
+            <div className={classes.links}>About us</div>
+            <div className={classes.links}>Contact</div>
+            <div className={classes.links}>List</div>
+          </div>
+          <div className={classes.topSection}>
+            <div className={classes.title}>Section</div>
+            <div className={classes.links}>Home</div>
+            <div className={classes.links}>About us</div>
+            <div className={classes.links}>Contact</div>
+            <div className={classes.links}>List</div>
           </div>
         </div>
-        <hr/>
-        <div className={classes.footerDown}>
-          <div>© 2023 Company, Inc. All rights reserved.</div>
-          <div>
-            <div>icon</div>
-            <div>icon</div>
-            <div>icon</div>
+        <div className={classes.topFooterRight}>
+          <div className={classes.title}>Subscribe to our newsletter</div>
+          <div className={classes.text}>
+            Randomly put text together , i dont know what is here.
           </div>
+          <div></div>
         </div>
-      </footer>
-    </>
+      </div>
+      <hr></hr>
+      <div className={classes.botFooter}>
+        <div>© 2023 Company, Inc. All rights reserved.</div>
+        <div className={classes.botFooterIcons}>
+          <div>icon</div>
+          <div>icon</div>
+          <div>icon</div>
+        </div>
+      </div>
+    </footer>
   );
 };
 

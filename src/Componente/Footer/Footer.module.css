@@ -1,48 +1,61 @@
-ul {
-  list-style: none;
-}
-
-li {
-  list-style-type: none;
-}
-
-.footer {
+footer {
+  /* height: 200px; */
   width: 100%;
-  background-color: red;
-  padding: 30px 50px;
+  padding: 50px 15%;
+  background-color: black;
 }
 
-.footerTopReal {
+.topFooter {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
+}
+
+.topFooterLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   gap: 10px;
+  padding-bottom: 25px;
 }
 
-.footerTopLeft {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 75%;
-}
-
-.footerList {
+.topSection {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 10px;
+  width: 250px;
 }
 
-.footerTopRight {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.title {
+  font-size: 24px;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
-.footerDown {
+.links {
+  font-size: 18px;
+  color: rgb(202, 202, 202);
+}
+
+.text {
+  font-size: 18px;
+  color: rgb(202, 202, 202);
+}
+
+.botFooter {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* border-top: 1px solid white; */
+  align-items: center;
+  padding-top: 25px;
+  color: white;
+}
+
+.botFooterIcons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
