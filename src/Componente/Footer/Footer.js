@@ -1,4 +1,7 @@
 import React from "react";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 import classes from "./Footer.module.css";
 
@@ -41,9 +44,15 @@ const Footer = () => {
       <div className={classes.botFooter}>
         <div>© 2023 Company, Inc. All rights reserved.</div>
         <div className={classes.botFooterIcons}>
-          <div>icon</div>
-          <div>icon</div>
-          <div>icon</div>
+          <div>
+            <FacebookIcon fontSize="large" />
+          </div>
+          <div>
+            <TwitterIcon fontSize="large" />
+          </div>
+          <div>
+            <InstagramIcon fontSize="large" />
+          </div>
         </div>
       </div>
     </footer>

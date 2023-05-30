@@ -1,12 +1,22 @@
 import classes from "./BigList.module.css";
 import AlbumHome from "../Album/AlbumHome";
 
-const BigList = ({ numberOfAlbums }) => {
-  const albumList = Array.from({ length: numberOfAlbums }, (_, index) => (
-    <AlbumHome key={index} />
-  ));
+const BigList = () => {
 
-  return <div>{albumList}</div>;
+  return (
+    <div className={classes.albums}>
+      <AlbumHome />
+      <AlbumHome />
+      <AlbumHome />
+      <AlbumHome />
+      <AlbumHome />
+      <AlbumHome />
+      <AlbumHome />
+      <AlbumHome />
+      <AlbumHome />
+      <AlbumHome />
+    </div>
+  );
 };
 
 export default BigList;

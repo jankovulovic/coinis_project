@@ -1,5 +1,6 @@
 import classes from "./Header.module.css";
 import Logo from "../../Assets/logoreal.jpg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,10 +10,23 @@ const Header = () => {
           <img src={Logo} alt="Guitar Logo" />
         </div>
         <div className={classes.navbarItems}>
-          <div className={classes.item}>Home</div>
-          <div className={classes.item}>About us </div>
-          <div className={classes.item}>Contact</div>
-          <div className={classes.item}>List</div>
+          <div className={classes.item}>
+            <Link to="/">Home</Link>
+          </div>
+          <div className={classes.item}>
+            <Link to="/aboutUs">About us</Link>
+          </div>
+          <div className={classes.item}>
+            <Link to="/contact">Contact</Link>
+          </div>
+          <div className={classes.item}>
+            <Link to="/list">List</Link>
+          </div>
+          <div className={classes.loginDiv}>
+            <Link to="/signin">
+              <button className={classes.loginBtn}>Login</button>
+            </Link>
+          </div>
         </div>
       </div>
     </>
