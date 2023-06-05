@@ -1,5 +1,4 @@
 import classes from "./Header.module.css";
-import Logo from "../../Assets/logoreal.jpg";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -7,7 +6,7 @@ const Header = () => {
     <>
       <div className={classes.navbar}>
         <div className={classes.logo}>
-          <img src={Logo} alt="Guitar Logo" />
+          <Link to="/">Gitarista</Link>
         </div>
         <div className={classes.navbarItems}>
           <div className={classes.item}>
@@ -20,7 +19,7 @@ const Header = () => {
             <Link to="/contact">Contact</Link>
           </div>
           <div className={classes.item}>
-            <Link to="/list">List</Link>
+            <Link to="/list">Search</Link>
           </div>
           <div className={classes.loginDiv}>
             <Link to="/signin">

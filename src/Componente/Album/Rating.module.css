@@ -1,0 +1,10 @@
+.score {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+.score div {
+  margin-top: 0px !important;
+}

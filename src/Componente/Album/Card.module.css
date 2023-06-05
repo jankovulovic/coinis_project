@@ -1,0 +1,69 @@
+.card {
+  width: 16%;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.35) !important;
+}
+
+.albumContent {
+  padding-bottom: 0px;
+}
+
+.img {
+  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+
+.img:hover {
+  transform: scale(1.1); /* Apply a scale transform on hover */
+}
+
+.text {
+  max-height: 150px;
+  overflow-y: scroll;
+}
+.text::-webkit-scrollbar {
+  width: 10px; /* Set the width of the scrollbar */
+}
+
+.text::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Set the background color of the scrollbar track */
+}
+
+.text::-webkit-scrollbar-thumb {
+  background-color: #888; /* Set the color of the scrollbar thumb */
+  border-radius: 5px; /* Set the border radius of the scrollbar thumb */
+}
+
+.text::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Set the color of the scrollbar thumb on hover */
+}
+
+.albumTitle {
+  color: rgb(233, 82, 82);
+}
+
+.rating {
+  display: flex;
+  flex-direction: row;
+}
+
+.songs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+.songLink {
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.35);
+  width: 99%;
+  border-radius: 20px;
+  padding: 3px;
+  color: black;
+  background-color: white;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Add smooth transitions for color changes */
+}
+
+.songLink:hover {
+  color: white;
+  background-color: rgb(233, 82, 82);
+}

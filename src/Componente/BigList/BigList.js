@@ -1,33 +1,28 @@
 import classes from "./BigList.module.css";
-import AlbumHome from "../Album/AlbumHome";
+// import AlbumHome from "../Album/AlbumHome";
 import { Link } from "react-router-dom";
+import AlbumCard from "../Album/Card";
 
 const BigList = () => {
   return (
     <>
-      <div>Most Popular Creators</div>
+      <div>Most Popular Albums</div>
       <div className={classes.filters}>
         <div className={classes.filterBand}>Official Bands</div>
         <div className={classes.filterSolo}>Solo Artists</div>
       </div>
 
       <div className={classes.albums}>
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
-        <AlbumHome />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
+        <AlbumCard />
       </div>
 
       <div className={classes.linkDiv}>
