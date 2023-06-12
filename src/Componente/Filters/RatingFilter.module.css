@@ -1,0 +1,35 @@
+.starFlex {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  width: fit-content;
+  margin: 0px auto;
+  /* border: 3px solid black; */
+}
+
+.ratingButton {
+  padding: 5px 10px;
+  border: 3px solid lightcoral;
+  border-radius: 10px;
+  font-size: 20px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  color: black;
+}
+
+.ratingButton:hover {
+  color: white;
+  background-color: lightcoral;
+}
+
+.starIcon {
+  /* color: #faaf00; */
+  color: inherit;
+}
+
+.active {
+  background-color: lightcoral;
+  color: white;
+}
