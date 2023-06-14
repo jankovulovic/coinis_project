@@ -2,17 +2,32 @@
   display: flex;
   flex-direction: row;
   height: 50px;
+  justify-content: flex-start;
+}
+
+.searchDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .searchBar {
-  width: 80%;
+  width: 95%;
   border: 3px solid black;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+.searchBar::placeholder {
+  font-size: 20px;
 }
 
 .searchIcon {
-  font-size: 50px;
+  height: 50px;
+  width: 50px;
   border: 3px solid black;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -21,7 +36,13 @@
 
 .advanceSearchBtn {
   border: 3px solid black;
-  margin-left: 30px;
   padding: 0px 10px;
   border-radius: 10px;
+  font-size: 20px;
+}
+
+.advanceSearchBtn:hover {
+  color: white;
+  background-color: lightcoral;
+  cursor: pointer;
 }
