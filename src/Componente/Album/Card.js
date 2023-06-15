@@ -8,7 +8,7 @@ import classes from "./Card.module.css";
 import HalfRating from "./Rating";
 import { Link } from "react-router-dom";
 
-export default function AlbumCard() {
+export default function AlbumCard(authorName, title) {
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -25,13 +25,13 @@ export default function AlbumCard() {
           component="div"
           className={classes.albumTitle}
         >
-          Linkin Park
+          {authorName}
         </Typography>
       </CardContent>
       <HalfRating />
       <div className={classes.songs}>
         <div className={classes.songLink}>
-          <Link to="/grupa"> Crawling 3:20 </Link>
+          <Link to="/grupa"> {title} </Link>
         </div>
         <div className={classes.songLink}> In the End 3:36 </div>
       </div>

@@ -1,16 +1,24 @@
 .container {
-  height: 400px;
+  height: 500px;
   width: 100%;
-  background-color: yellow;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  font-size: 30px;
-  padding-top: 50px;
   color: white;
-  background-color: blue;
-  gap: 30px;
+  gap: 50px;
+  margin-bottom: 50px;
+
+  background-position: center;
+  background-size: 100% 600px;
+  background-repeat: no-repeat;
+  position: relative;
+  background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url("../../Assets/guitar-classic-black-chords.jpg");
 }
 
 .topText {
@@ -19,8 +27,5 @@
 
 .middleText {
   font-size: 40px;
-}
-
-.bottomText {
-  font-size: 24px;
+  width: 60%;
 }
