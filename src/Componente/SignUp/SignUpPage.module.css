@@ -1,0 +1,46 @@
+.container {
+  width: 600px;
+  margin: 50px auto;
+  padding: 175px 50px;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: #f8f8f8;
+  opacity: 0.75;
+  }
+  
+  .signUpForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .inputField {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+  
+  .submitBtn {
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: lightcoral;
+    cursor: pointer;
+  }
+  
+  
+  .login {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  

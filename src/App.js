@@ -3,9 +3,9 @@ import Footer from "./Componente/Footer/Footer";
 import Home from "./Componente/Home/Home";
 import AboutUs from "./Componente/AboutUs/AboutUs";
 import Contact from "./Componente/Contact/Contact";
-import SignInSide from "./Componente/SignIn/SignInSide";
-import SignUp from "./Componente/SignUp/SignUp";
+import LoginPage from "./Componente/Login/LoginPage";
 import SoloAlbum from "./Componente/Album/SoloAlbum";
+import SignUpPage from "./Componente/SignUp/SignUpPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
@@ -22,11 +22,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/grupa" element={<SoloAlbum />} />
           <Route path="/search" element={<SearchPage />} />
-
-          {/* <Route path="/acords" element={<Acords />} /> */}
-          {/* <Route path="/login" element={<Login />} /> */}
-          <Route path="/login" element={<SignInSide />} />
-          <Route path="/register" element={<SignUp />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<SignUpPage />} />
         </Routes>
         <Footer />
       </Router>
