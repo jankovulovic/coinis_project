@@ -1,0 +1,83 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 3px solid black;
+  border-radius: 20px;
+  width: 19%;
+  align-items: center;
+  padding: 20px;
+  height: 400px;
+}
+
+.imgDiv {
+  width: 100%;
+  height: 120px;
+  background-color: black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.imgDiv img {
+  width: 100px;
+  height: 100px;
+  transition: all 0.3s;
+}
+
+.imgDiv img:hover {
+  transform: scale(1.1);
+}
+
+.titleName {
+  font-size: 20px;
+}
+
+.latest {
+  font-size: 18px;
+}
+
+.latest:hover {
+  text-decoration: underline 3px black;
+  text-underline-offset: 5px;
+  cursor: pointer;
+}
+
+.songList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 95%;
+  justify-content: flex-start;
+  overflow-y: scroll;
+}
+
+.songList::-webkit-scrollbar {
+  width: 10px; /* Set the width of the scrollbar */
+}
+
+.songList::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Set the background color of the scrollbar track */
+}
+
+.songList::-webkit-scrollbar-thumb {
+  background-color: #888; /* Set the color of the scrollbar thumb */
+  border-radius: 5px; /* Set the border radius of the scrollbar thumb */
+}
+
+.songList::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Set the color of the scrollbar thumb on hover */
+}
+
+.item {
+  padding: 3px 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.item:hover {
+  color: white;
+  background-color: lightcoral;
+  border: 3px solid white;
+  box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}

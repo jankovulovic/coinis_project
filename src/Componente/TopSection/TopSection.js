@@ -1,16 +1,16 @@
+import React from "react";
 import classes from "./TopSection.module.css";
 
 const TopSection = () => {
   return (
     <div className={classes.container}>
-      <div className={classes.topText}>Big Title Text</div>
-      <div className={classes.middleText}>
-        Whatever is suppost to be here , it should be around this lenght
+      <div className={classes.topText}>
+        Discover the joy of playing guitar and Master the Art of guitar chords
       </div>
-      <div className={classes.bottomText}>
-        Here can be some kind of explanation . Maybe really small letters , i
-        still dont know but some kind of lorem for the start or whatever i am
-        writing right now.
+      <div className={classes.middleText}>
+        Unleash your inner musician with our extensive repertoire of songs. From
+        classics to modern hits, learn to play captivating chords and captivate
+        your audience with every strum.
       </div>
     </div>
   );

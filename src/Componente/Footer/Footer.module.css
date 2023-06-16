@@ -59,3 +59,9 @@ footer {
   flex-direction: row;
   gap: 20px;
 }
+
+.topFooterRight {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

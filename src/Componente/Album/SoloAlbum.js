@@ -26,13 +26,13 @@ const SoloAlbum = () => {
                 <div className={classes.stats}>Number of songs: </div>
                 <div className={classes.stats}>Genre(s): </div>
                 <div className={classes.stats}>Popularity ranking: </div>
-                <div className={classes.stats}>Random stuff 2: </div>
+                {/* <div className={classes.stats}>Random stuff 2: </div> */}
               </div>
               <div className={classes.statValue}>
                 <div>21</div>
                 <div>Rock , Punk , Metal</div>
                 <div> Rank , rank</div>
-                <div>whatever should be here</div>
+                {/* <div>whatever should be here</div> */}
               </div>
             </div>
           </div>

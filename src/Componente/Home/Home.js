@@ -1,10 +1,10 @@
 import BigList from "../BigList/BigList";
-// import TopSection from "../TopSection/TopSection";
+import TopSection from "../TopSection/TopSection";
 
 const Home = () => {
   return (
     <>
-      {/* <TopSection /> */}
+      <TopSection />
       <BigList />
     </>
   );

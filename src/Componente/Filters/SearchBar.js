@@ -17,17 +17,19 @@ const SearchBar = () => {
 
   return (
     <form className={classes.formFlex} onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={handleInputChange}
-        className={classes.searchBar}
-      />
-      <button type="submit">
-        <SearchIcon className={classes.searchIcon} />
-      </button>
-      <button className={classes.advanceSearchBtn}>Advance Search</button>
+      <div className={classes.searchDiv}>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={handleInputChange}
+          className={classes.searchBar}
+        />
+        <button className={classes.searchIcon} type="submit">
+          <SearchIcon />
+        </button>
+      </div>
+      <button className={classes.advanceSearchBtn}>Advance</button>
     </form>
   );
 };

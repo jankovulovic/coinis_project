@@ -22,7 +22,7 @@ const Header = () => {
             <Link to="/search">Search</Link>
           </div>
           <div className={classes.loginDiv}>
-            <Link to="/signin">
+            <Link to="/login">
               <button className={classes.loginBtn}>Login</button>
             </Link>
           </div>

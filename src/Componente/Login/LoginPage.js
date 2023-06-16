@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import classes from "./LoginPage.module.css";
 
 const LoginPage = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -47,10 +46,8 @@ const LoginPage = () => {
         </button>
       </form>
 
-
-
       <div className={classes.signup}>
-      Don't have an account? <Link to="/signup">Sign up</Link>
+        Don't have an account? <Link to="/register">Sign up</Link>
       </div>
     </div>
   );
