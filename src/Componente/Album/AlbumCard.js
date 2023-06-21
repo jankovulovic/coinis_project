@@ -2,11 +2,13 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import classes from "./AlbumCard.module.css";
-import HalfRating from "./Rating";
 import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import HalfRating from "./Rating";
+import classes from "./AlbumCard.module.css";
 
-const AlbumCard = ({ authorName, imgLink, titles }) => {
+const AlbumCard = ({ authorName, imgLink, title }) => {
   return (
     <Card className={classes.card}>
       <Link to="/grupa">
@@ -30,17 +32,17 @@ const AlbumCard = ({ authorName, imgLink, titles }) => {
       </CardContent>
       <HalfRating />
       <div className={classes.songs}>
-        {titles && titles.length > 0 ? (
-          titles.map((title, index) => (
-            <div className={classes.songLink} key={index}>
-              <Link to="/grupa">{title}</Link>
-            </div>
-          ))
+        {/* {title && title.length > 0 ? (
+          title.map((title, index) => ( */}
+        <div className={classes.songLink}>
+          <Link to="/grupa">{title}</Link>
+        </div>
+        {/* ))
         ) : (
           <div className={classes.songLink}>
             No titles available for this album.
           </div>
-        )}
+        )} */}
       </div>
     </Card>
   );

@@ -5,20 +5,21 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const BigList = () => {
-  const [songs, setSongs] = useState([]);
+  const [authors, setAuthors] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/v1/song/author/0/?page_size=1000")
+      .get("http://127.0.0.1:8000/api/v1/song/author/0/?page_size=10")
       .then((response) => {
         const datas = response.data;
-        setSongs(datas);
-        console.log(response);
+        setAuthors(datas);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, []);
+
+  console.log(authors);
 
   return (
     <>
@@ -30,12 +31,13 @@ const BigList = () => {
         </div>
 
         <div className={classes.albums}>
-          {songs.length > 0 &&
-            songs.map((data) => (
+          {authors.length > 0 &&
+            authors.map((data) => (
               <AlbumCard
                 key={data.id}
                 authorName={data.name}
                 imgLink={data.link}
+                title={data.title}
               />
             ))}
         </div>
