@@ -1,0 +1,22 @@
+.songs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+.songLink {
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.35);
+  width: 99%;
+  border-radius: 20px;
+  padding: 3px;
+  color: black;
+  background-color: white;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Add smooth transitions for color changes */
+}
+
+.songLink:hover {
+  color: white;
+  background-color: rgb(233, 82, 82);
+}

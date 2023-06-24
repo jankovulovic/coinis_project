@@ -1,26 +1,39 @@
 import { useEffect, useState } from "react";
-import AlphabetArray from "../Filters/AlphabetArray";
-import RatingFilter from "../Filters/RatingFilter";
+// import AlphabetArray from "../Filters/AlphabetArray";
+// import RatingFilter from "../Filters/RatingFilter";
 import SearchBar from "../Filters/SearchBar";
 import classes from "./SearchPage.module.css";
 import AuthorCard from "../Filters/AuthorCard";
 import Song from "../Filters/Song";
+import axios from "axios";
 
 const SearchPage = () => {
   const [selectedFilter, setSelectedFilter] = useState("");
-  const [orderByFilter, setOrderByFilter] = useState("");
+  const [data, setData] = useState([]);
 
-  const handleFilterClick = (filter) => {
-    setSelectedFilter(filter);
-  };
-
-  const handleOrderByFilterClick = (filter) => {
-    setOrderByFilter(filter);
-  };
+  // const [orderByFilter, setOrderByFilter] = useState("");
 
   useEffect(() => {
-    setSelectedFilter("Authors"); // Set "Authors" as the initial active filter
-  }, []);
+    const fetchData = async () => {
+      let apiUrl;
+
+      if (selectedFilter === "Authors") {
+        apiUrl = "http://127.0.0.1:8000/api/v2/songs/authors/0/?page_size=10";
+      } else if (selectedFilter === "Songs") {
+        apiUrl = "http://127.0.0.1:8000/api/v2/songs/0/?page_size=10";
+      }
+
+      try {
+        const response = await axios.get(apiUrl);
+        setData(response.data);
+        console.log(apiUrl);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [selectedFilter]);
 
   return (
     <div className={classes.filterContainer}>
@@ -30,7 +43,7 @@ const SearchPage = () => {
           className={`${classes.mainOptOne} ${
             selectedFilter === "Authors" ? classes.active : ""
           }`}
-          onClick={() => handleFilterClick("Authors")}
+          onClick={() => setSelectedFilter("Authors")}
         >
           Authors
         </div>
@@ -38,7 +51,7 @@ const SearchPage = () => {
           className={`${classes.mainOptTwo} ${
             selectedFilter === "Songs" ? classes.active : ""
           }`}
-          onClick={() => handleFilterClick("Songs")}
+          onClick={() => setSelectedFilter("Songs")}
         >
           Songs
         </div>
@@ -48,7 +61,7 @@ const SearchPage = () => {
         <SearchBar />
       </div>
 
-      <div className={classes.filters}>
+      {/* <div className={classes.filters}>
         <div className={classes.result}>330 Results for "???"</div>
         <div className={classes.filterOptions}>
           <div>Order by:</div>
@@ -77,46 +90,40 @@ const SearchPage = () => {
             Remove all filters
           </button>
         </div>
-      </div>
+      </div> */}
 
-      <div>
+      {/* <div>
         {orderByFilter === "A-Z" && <AlphabetArray />}
         {orderByFilter === "Rating" && <RatingFilter />}
-      </div>
+      </div> */}
 
       {selectedFilter === "Authors" && (
         <div>
           <div className={classes.listName}>Authors</div>
           <div className={classes.cardFlex}>
-            <AuthorCard />
-            <AuthorCard />
-            <AuthorCard />
-            <AuthorCard />
-            <AuthorCard />
-            <AuthorCard />
-            <AuthorCard />
-            <AuthorCard />
-            <AuthorCard />
-            <AuthorCard />
+            {data.map((item) => (
+              <AuthorCard
+                key={item.author_id}
+                imgLink={item.link}
+                name={item.name}
+              />
+            ))}
           </div>
         </div>
       )}
+
       {selectedFilter === "Songs" && (
         <div>
           <div className={classes.listName}>Songs</div>
           <div className={classes.songFlex}>
-            <Song />
-            <Song />
-            <Song />
-            <Song />
-            <Song />
-            <Song />
-            <Song />
-            <Song />
-            <Song />
-            <Song />
-            <Song />
-            <Song />
+            {data.map((item) => (
+              <Song
+                key={item.song_id}
+                authorName={item.author_name}
+                songTitle={item.title}
+                authorImg={item.author_link}
+              />
+            ))}
           </div>
         </div>
       )}

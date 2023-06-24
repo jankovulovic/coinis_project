@@ -13,6 +13,9 @@ import SearchPage from "./Componente/SearchPage/SearchPage";
 import ProfilePage from "./Componente/ProfilePage/ProfilePage";
 
 function App() {
+  const API_URL = "http://127.0.0.1:8000";
+  const API_VERSION = "/api/v2/";
+
   return (
     <div className="App">
       <Router>

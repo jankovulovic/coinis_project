@@ -1,22 +1,22 @@
 import classes from "./Song.module.css";
 import image from "../../Assets/guitarman2.jpg";
 
-const Song = () => {
+const Song = ({ authorName, songTitle, authorImg }) => {
   return (
     <>
       <div className={classes.songFlex}>
         <div className={classes.imgDiv}>
-          <img src={image} alt="Profile man" />
+          <img src={authorImg} alt="Profile man" />
         </div>
         <div className={classes.songInfo}>
           <div className={classes.songTitle}>
-            <b>Author</b>: Linkin Park Linkin 
+            <b>Author</b>: {authorName}
           </div>
           <div className={classes.songTitle}>
-            <b>Name</b>: In the End In the End 
+            <b>Name</b>: {songTitle}
           </div>
           {/* <div className={classes.songCreator}>
-            <b>Creator</b>: Username
+            <b>Creator Email</b>: {authorImg}
           </div> */}
         </div>
       </div>
