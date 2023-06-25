@@ -50,31 +50,6 @@
   align-items: center;
 }
 
-.result {
-  font-size: 26px;
-}
-
-.filterOptions {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-  font-size: 26px;
-}
-
-.filterOptions button {
-  font-size: 16px;
-}
-
-.filterOptions button:hover {
-  text-decoration: underline 3px lightcoral;
-  text-underline-offset: 5px;
-}
-
-.filterOptions .active {
-  text-decoration: underline 3px lightcoral;
-  text-underline-offset: 5px;
-}
-
 .listName {
   font-size: 40px;
   margin-bottom: 30px;
@@ -101,4 +76,51 @@
   background-color: lightcoral;
   border: 3px solid white;
   box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.6);
+}
+
+.formFlex {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 48%;
+  margin: 0px auto;
+}
+
+.searchDiv {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
+.searchBar {
+  width: 95%;
+  font-size: 20px;
+  padding-left: 20px;
+  border: 3px solid black;
+}
+
+.searchBar::placeholder {
+  font-size: 20px;
+}
+
+.searchIcon {
+  height: 50px;
+  width: 50px;
+  border: 3px solid black;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-left: -3px;
+}
+
+.advanceSearchBtn {
+  border: 3px solid black;
+  padding: 0px 10px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.advanceSearchBtn:hover {
+  color: white;
+  background-color: lightcoral;
+  cursor: pointer;
 }

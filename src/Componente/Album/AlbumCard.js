@@ -7,7 +7,7 @@ import HalfRating from "./Rating";
 import classes from "./AlbumCard.module.css";
 import AlbumSongsList from "./ALbumSongsList";
 
-const AlbumCard = ({ authorName, imgLink, title, authorId }) => {
+const AlbumCard = ({ authorName, imgLink, authorId }) => {
   return (
     <Card className={classes.card}>
       <Link to="/grupa">

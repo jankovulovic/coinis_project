@@ -1,5 +1,4 @@
 import classes from "./Song.module.css";
-import image from "../../Assets/guitarman2.jpg";
 
 const Song = ({ authorName, songTitle, authorImg }) => {
   return (
@@ -16,7 +15,7 @@ const Song = ({ authorName, songTitle, authorImg }) => {
             <b>Name</b>: {songTitle}
           </div>
           {/* <div className={classes.songCreator}>
-            <b>Creator Email</b>: {authorImg}
+            <b></b>: {authorImg}
           </div> */}
         </div>
       </div>

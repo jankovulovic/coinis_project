@@ -9,13 +9,10 @@ import SignUpPage from "./Componente/SignUp/SignUpPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import SearchPage from "./Componente/SearchPage/SearchPage";
 import ProfilePage from "./Componente/ProfilePage/ProfilePage";
+import SearchPage from "./Componente/SearchPage/SearchPage";
 
 function App() {
-  const API_URL = "http://127.0.0.1:8000";
-  const API_VERSION = "/api/v2/";
-
   return (
     <div className="App">
       <Router>

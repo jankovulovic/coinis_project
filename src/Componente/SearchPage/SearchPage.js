@@ -1,132 +1,138 @@
-import { useEffect, useState } from "react";
-// import AlphabetArray from "../Filters/AlphabetArray";
-// import RatingFilter from "../Filters/RatingFilter";
-import SearchBar from "../Filters/SearchBar";
-import classes from "./SearchPage.module.css";
-import AuthorCard from "../Filters/AuthorCard";
-import Song from "../Filters/Song";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
+import AuthorCard from "../SearchResults/AuthorCard";
+import classes from "./SearchPage.module.css";
+import Song from "../SearchResults/Song";
+import SearchIcon from "@mui/icons-material/Search";
+
+const API_URL = "http://127.0.0.1:8000";
+const API_VERSION = "/api/v2";
+const AUTHORS_API = API_URL + API_VERSION + "/songs/authors/0/?page_size=1000";
+const SONGS_API = API_URL + API_VERSION + "/songs/0/?page_size=1000";
 
 const SearchPage = () => {
-  const [selectedFilter, setSelectedFilter] = useState("");
-  const [data, setData] = useState([]);
+  const [authors, setAuthors] = useState([]);
+  const [songs, setSongs] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterType, setFilterType] = useState("Authors"); // Set initial filter type to "Authors"
+  const [isLoading, setIsLoading] = useState(false);
 
-  // const [orderByFilter, setOrderByFilter] = useState("");
+  const fetchData = useCallback(
+    (url) => {
+      setIsLoading(true);
+      axios
+        .get(url)
+        .then((response) => {
+          if (response.data) {
+            if (filterType === "Authors") {
+              setAuthors(response.data);
+              setIsLoading(false);
+            } else if (filterType === "Songs") {
+              setSongs(response.data);
+              setIsLoading(false);
+            }
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setIsLoading(false);
+        });
+    },
+    [filterType]
+  );
 
   useEffect(() => {
-    const fetchData = async () => {
-      let apiUrl;
+    if (filterType === "Authors") {
+      fetchData(AUTHORS_API);
+    } else if (filterType === "Songs") {
+      fetchData(SONGS_API);
+    }
+  }, [filterType, fetchData]);
 
-      if (selectedFilter === "Authors") {
-        apiUrl = "http://127.0.0.1:8000/api/v2/songs/authors/0/?page_size=10";
-      } else if (selectedFilter === "Songs") {
-        apiUrl = "http://127.0.0.1:8000/api/v2/songs/0/?page_size=10";
-      }
+  const handleSearchInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
-      try {
-        const response = await axios.get(apiUrl);
-        setData(response.data);
-        console.log(apiUrl);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const handleSearch = (event) => {
+    event.preventDefault();
+    if (filterType === "Authors") {
+      const url = `${AUTHORS_API}&search=${searchTerm}`;
+      fetchData(url);
+    } else if (filterType === "Songs") {
+      const url = `${SONGS_API}&search=${searchTerm}`;
+      fetchData(url);
+    }
+  };
 
-    fetchData();
-  }, [selectedFilter]);
+  const handleFilterChange = (filter) => {
+    setFilterType(filter);
+    setSearchTerm("");
+  };
 
   return (
     <div className={classes.filterContainer}>
       <div className={classes.mainTitle}>Search</div>
       <div className={classes.mainOptDiv}>
         <div
-          className={`${classes.mainOptOne} ${
-            selectedFilter === "Authors" ? classes.active : ""
-          }`}
-          onClick={() => setSelectedFilter("Authors")}
+          className={`mainOptOne ${filterType === "Authors" ? "active" : ""}`}
+          onClick={() => handleFilterChange("Authors")}
         >
           Authors
         </div>
         <div
-          className={`${classes.mainOptTwo} ${
-            selectedFilter === "Songs" ? classes.active : ""
-          }`}
-          onClick={() => setSelectedFilter("Songs")}
+          className={`mainOptTwo ${filterType === "Songs" ? "active" : ""}`}
+          onClick={() => handleFilterChange("Songs")}
         >
           Songs
         </div>
       </div>
 
-      <div>
-        <SearchBar />
-      </div>
+      <form className={classes.formFlex} onSubmit={handleSearch}>
+        <div className={classes.searchDiv}>
+          <input
+            className={classes.searchBar}
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchInputChange}
+            placeholder="Search..."
+          />
 
-      {/* <div className={classes.filters}>
-        <div className={classes.result}>330 Results for "???"</div>
-        <div className={classes.filterOptions}>
-          <div>Order by:</div>
-          <button
-            className={orderByFilter === "A-Z" ? classes.active : ""}
-            onClick={() => handleOrderByFilterClick("A-Z")}
-          >
-            A-Z
-          </button>
-          <button
-            className={orderByFilter === "Rating" ? classes.active : ""}
-            onClick={() => handleOrderByFilterClick("Rating")}
-          >
-            Rating
-          </button>
-          <button
-            className={orderByFilter === "Favorites" ? classes.active : ""}
-            onClick={() => handleOrderByFilterClick("Favorites")}
-          >
-            Favorites
-          </button>
-          <button
-            className={orderByFilter === "" ? classes.actives : ""}
-            onClick={() => handleOrderByFilterClick("")}
-          >
-            Remove all filters
+          <button className={classes.searchIcon} type="submit">
+            <SearchIcon />
           </button>
         </div>
-      </div> */}
+      </form>
 
-      {/* <div>
-        {orderByFilter === "A-Z" && <AlphabetArray />}
-        {orderByFilter === "Rating" && <RatingFilter />}
-      </div> */}
-
-      {selectedFilter === "Authors" && (
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : filterType === "Authors" ? (
         <div>
           <div className={classes.listName}>Authors</div>
           <div className={classes.cardFlex}>
-            {data.map((item) => (
+            {authors.map((author, index) => (
               <AuthorCard
-                key={item.author_id}
-                imgLink={item.link}
-                name={item.name}
+                key={index} // Use the index as a temporary key
+                imgLink={author.link}
+                authorName={author.name}
               />
             ))}
           </div>
         </div>
-      )}
-
-      {selectedFilter === "Songs" && (
+      ) : filterType === "Songs" ? (
         <div>
           <div className={classes.listName}>Songs</div>
           <div className={classes.songFlex}>
-            {data.map((item) => (
+            {songs.map((song) => (
               <Song
-                key={item.song_id}
-                authorName={item.author_name}
-                songTitle={item.title}
-                authorImg={item.author_link}
+                key={song.song_id}
+                authorName={song.author_name}
+                songTitle={song.title}
+                authorImg={song.author_link}
               />
             ))}
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };
