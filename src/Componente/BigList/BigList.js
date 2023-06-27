@@ -4,36 +4,14 @@ import AlbumCard from "../Album/AlbumCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-// const BigList = () => {
-//   const [authors, setAuthors] = useState([]);
-
-//   useEffect(() => {
-//     axios
-//       .get("http://127.0.0.1:8000/api/v1/song/author/0/?page_size=10")
-//       .then((response) => {
-//         const datas = response.data;
-//         setAuthors(datas);
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching data:", error);
-//       });
-//   }, []);
-
-//   console.log(authors);
-
 const BigList = () => {
   const [authors, setAuthors] = useState([]);
-  const [searchText, setSearchText] = useState("");
   const API_URL = "http://127.0.0.1:8000";
   const API_VERSION = "/api/v2/";
 
   useEffect(() => {
     axios
-      .get(
-        API_URL +
-          API_VERSION +
-          `songs/authors/0/?page_size=10&search=${searchText}`
-      )
+      .get(API_URL + API_VERSION + `songs/authors/0/?page_size=10`)
       .then((response) => {
         const datas = response.data;
         setAuthors(datas);
@@ -43,7 +21,6 @@ const BigList = () => {
       });
   }, []);
 
-  // console.log(authors);
   return (
     <>
       <div className={classes.container}>
@@ -85,7 +62,7 @@ const BigList = () => {
               as it would be foolish to allow anything if you are not logged in.
             </div>
             <div className={classes.linkDivs}>
-              <Link to="/list">
+              <Link to="/addingPage">
                 <div className={classes.optBtn}>Button</div>
               </Link>
             </div>

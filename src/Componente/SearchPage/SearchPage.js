@@ -14,7 +14,7 @@ const SearchPage = () => {
   const [authors, setAuthors] = useState([]);
   const [songs, setSongs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterType, setFilterType] = useState("Authors"); // Set initial filter type to "Authors"
+  const [filterType, setFilterType] = useState("Authors");
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = useCallback(
@@ -74,13 +74,17 @@ const SearchPage = () => {
       <div className={classes.mainTitle}>Search</div>
       <div className={classes.mainOptDiv}>
         <div
-          className={`mainOptOne ${filterType === "Authors" ? "active" : ""}`}
+          className={`${classes.mainOptOne} ${
+            filterType === "Authors" ? "active" : ""
+          }`}
           onClick={() => handleFilterChange("Authors")}
         >
           Authors
         </div>
         <div
-          className={`mainOptTwo ${filterType === "Songs" ? "active" : ""}`}
+          className={`${classes.mainOptTwo} ${
+            filterType === "Songs" ? "active" : ""
+          }`}
           onClick={() => handleFilterChange("Songs")}
         >
           Songs
@@ -109,9 +113,9 @@ const SearchPage = () => {
         <div>
           <div className={classes.listName}>Authors</div>
           <div className={classes.cardFlex}>
-            {authors.map((author, index) => (
+            {authors.map((author) => (
               <AuthorCard
-                key={index} // Use the index as a temporary key
+                key={author.author_id}
                 imgLink={author.link}
                 authorName={author.name}
               />
