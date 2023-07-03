@@ -23,7 +23,7 @@ const Footer = () => {
               <Link to="/search">Search</Link>
             </div>
             <div className={classes.links}>
-              <Link to="/">Add Music</Link>
+              <Link to="/addingPage">Add Music</Link>
             </div>
           </div>
           <div className={classes.topSection}>

@@ -9,8 +9,14 @@
   border-bottom-left-radius: 47px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-
+  transition: all 0.5;
   transform: scale(0.95);
+}
+
+.songFlex:hover {
+  text-decoration: none;
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.6);
+  transform: scale(1);
 }
 
 .imgDiv {
@@ -33,9 +39,3 @@
   gap: 5px;
   width: 200px;
 }
-
-/* .songTitle {
-}
-
-.songCreator {
-} */

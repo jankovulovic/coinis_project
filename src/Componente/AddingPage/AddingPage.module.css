@@ -1,0 +1,143 @@
+.textInputDiv {
+  font-family: "Courier New", Courier, monospace;
+  padding: 10px;
+  width: 50%;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+}
+.textInputDiv textarea {
+  text-align: start;
+}
+
+.guideTitle {
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.guideList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.guideItem {
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 50px;
+  justify-content: space-between;
+}
+
+.songInputs {
+  width: 300px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.songInputs label {
+  font-size: 24px;
+  text-align: center;
+}
+
+.songInputs input {
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.authorSelect {
+  width: 300px;
+  height: 50px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.newAuthor {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.newAuthorInputs {
+  width: 300px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newAuthorInputs label {
+  font-size: 24px;
+  text-align: center;
+  padding: 10px;
+}
+
+.newAuthorInputs input {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.newAuthorDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.newAuthorDiv label {
+  font-size: 24px;
+}
+
+.newAuthorDiv button {
+  width: fit-content;
+  border: 3px solid black;
+  border-radius: 20px;
+  padding: 5px 10px;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.newAuthorDiv button:hover {
+  background-color: black;
+  border: 3px solid white;
+  color: white;
+}
+
+.textInputDiv label {
+  font-size: 24px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.textInputDiv textarea {
+  min-width: 70%;
+  margin: 10px auto;
+  border: 3px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 16px;
+  height: 500px;
+}
+
+.submitSongBtn button {
+  width: fit-content;
+  border: 3px solid black;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+.submitSongBtn button:active {
+  background-color: black;
+  color: white;
+}

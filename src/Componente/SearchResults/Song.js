@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import classes from "./Song.module.css";
 
-const Song = ({ authorName, songTitle, authorImg }) => {
+const Song = ({ authorName, songTitle, authorImg, songId }) => {
   return (
     <>
-      <div className={classes.songFlex}>
+      <Link className={classes.songFlex} to={`/songPage/${songId}`}>
         <div className={classes.imgDiv}>
           <img src={authorImg} alt="Profile man" />
         </div>
@@ -18,7 +19,7 @@ const Song = ({ authorName, songTitle, authorImg }) => {
             <b></b>: {authorImg}
           </div> */}
         </div>
-      </div>
+      </Link>
     </>
   );
 };
