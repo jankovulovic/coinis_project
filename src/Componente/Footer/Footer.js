@@ -37,6 +37,9 @@ const Footer = () => {
             <div className={classes.links}>
               <Link to="/register">Register</Link>
             </div>
+            <div className={classes.links}>
+              <Link to="/profile">Profile settings</Link>
+            </div>
           </div>
           {/* <div className={classes.topSection}>
             <div className={classes.title}>Section</div>
