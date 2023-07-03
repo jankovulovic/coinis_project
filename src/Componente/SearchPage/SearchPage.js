@@ -132,6 +132,7 @@ const SearchPage = () => {
                 authorName={song.author_name}
                 songTitle={song.title}
                 authorImg={song.author_link}
+                songId={song.song_id}
               />
             ))}
           </div>

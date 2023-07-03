@@ -10,7 +10,7 @@ import AlbumSongsList from "./ALbumSongsList";
 const AlbumCard = ({ authorName, imgLink, authorId }) => {
   return (
     <Card className={classes.card}>
-      <Link to="/grupa">
+      <Link to={`/group/${authorId}`}>
         <CardMedia
           component="img"
           alt="band image"

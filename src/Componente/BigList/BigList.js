@@ -44,7 +44,7 @@ const BigList = () => {
         </div>
 
         <div className={classes.linkDiv}>
-          <Link to="/list" className={classes.linkBtn}>
+          <Link to="/search" className={classes.linkBtn}>
             <div className={classes.seeAll}>See All Creators</div>
           </Link>
         </div>
@@ -68,7 +68,7 @@ const BigList = () => {
             </div>
           </div>
           <div className={classes.addPlaylist}>
-            <div className={classes.optTitle}>Make your own Playlist.</div>
+            <div className={classes.optTitle}>Edit your songs.</div>
             <div>
               This is still a new feature, and I have no clue what I would put
               here. How this will be done is questionable. Need more thinking.

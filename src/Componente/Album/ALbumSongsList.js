@@ -32,7 +32,7 @@ const AlbumSongsList = ({ authorId }) => {
       {songs.map((item) => {
         return (
           <div className={classes.songLink}>
-            <Link to="/group"> {item.title}</Link>
+            <Link to={`/songPage/${item.song_id}`}> {item.title}</Link>
           </div>
         );
       })}
