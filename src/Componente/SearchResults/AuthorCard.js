@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import classes from "./AuthorCard.module.css";
 
-const AuthorCard = ({ imgLink, authorName }) => {
+const AuthorCard = ({ imgLink, authorName, authorId }) => {
   return (
     <>
       <div className={classes.card}>
-        <Link to="/grupa">
+        <Link to={`/group/${authorId}`}>
           <div
             className={classes.imgDiv}
             style={{

@@ -35,10 +35,16 @@ const SongPage = () => {
       <div className={classes.info}>
         <div className={classes.imgDiv}>
           <img
-            src={song.author_link}
-            alt={song.author_name}
-            height="200"
-            width="300"
+            // src={song.author_link}
+            // alt={song.author_name}
+            style={{
+              backgroundImage: `url(${song.author_link})`,
+              width: "300px",
+              height: "200px",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            alt=""
           />
         </div>
         <div className={classes.infoDiv}>

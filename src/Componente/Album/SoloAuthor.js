@@ -42,15 +42,18 @@ const SoloAlbum = () => {
           <Link to="/">Home</Link> / {author.name}
         </div>
         <div className={classes.infoContainer}>
-          <div>
-            <img
-              src={author.link}
-              alt="albumImg"
-              height="300"
-              width="400"
-              className={classes.albumImg}
-            />
-          </div>
+          <img
+            className={classes.albumImg}
+            style={{
+              backgroundImage: `url(${author.link})`,
+              width: "400px",
+              height: "300px",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            alt=""
+          />
+
           <div className={classes.importantInfo}>
             <div className={classes.title}>{author.name}</div>
             <HalfRating />

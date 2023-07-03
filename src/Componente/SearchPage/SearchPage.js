@@ -118,6 +118,7 @@ const SearchPage = () => {
                 key={author.author_id}
                 imgLink={author.link}
                 authorName={author.name}
+                authorId={author.author_id}
               />
             ))}
           </div>
