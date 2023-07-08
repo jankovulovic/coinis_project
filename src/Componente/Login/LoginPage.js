@@ -18,7 +18,9 @@ const LoginPage = () => {
       console.log(response.data);
 
       localStorage.setItem("loggedIn", "true");
-      window.location.href = "/"; // Redirect to home page
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
+      window.location.href = "/";
     } catch (error) {
       console.error("Login failed:", error);
     }

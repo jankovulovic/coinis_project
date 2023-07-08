@@ -15,9 +15,6 @@ const Song = ({ authorName, songTitle, authorImg, songId }) => {
           <div className={classes.songTitle}>
             <b>Name</b>: {songTitle}
           </div>
-          {/* <div className={classes.songCreator}>
-            <b></b>: {authorImg}
-          </div> */}
         </div>
       </Link>
     </>

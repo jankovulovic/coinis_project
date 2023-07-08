@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import classes from "./Header.module.css";
 
 const Header = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkLoggedInStatus = () => {
+      const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+      setLoggedIn(isLoggedIn);
+    };
+
+    checkLoggedInStatus();
+  }, []);
+
   const handleLogout = () => {
-    localStorage.removeItem("loggedIn");
+    const logoutUrl = "http://127.0.0.1:8000/api/logout/";
 
-    window.location.reload(); 
+    axios
+      .post(logoutUrl)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response);
+          localStorage.removeItem("loggedIn");
+          // window.location.reload();
+        } else {
+          throw new Error("Logout request failed");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-
-  const loggedIn = localStorage.getItem("loggedIn") === "true";
 
   return (
     <>
@@ -35,7 +58,7 @@ const Header = () => {
           <div className={classes.loginDiv}>
             {loggedIn ? (
               <button className={classes.loginBtn} onClick={handleLogout}>
-                Logout
+                <Link to="/">Logout</Link>
               </button>
             ) : (
               <Link to="/login">

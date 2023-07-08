@@ -1,0 +1,41 @@
+.songFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 25%;
+  border: 3px solid black;
+  border-top-left-radius: 47px;
+  border-bottom-left-radius: 47px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: all 0.5;
+  transform: scale(0.95);
+}
+
+.songFlex:hover {
+  text-decoration: none;
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.6);
+  transform: scale(1);
+}
+
+.imgDiv {
+  height: 90px;
+  width: 90px;
+}
+
+.imgDiv img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.songInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  gap: 5px;
+  width: 200px;
+}

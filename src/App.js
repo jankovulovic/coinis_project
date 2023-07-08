@@ -8,12 +8,13 @@ import SignUpPage from "./Componente/SignUp/SignUpPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import ProfilePage from "./Componente/ProfilePage/ProfilePage";
+// import ProfilePage from "./Componente/ProfilePage/ProfilePage";
 import SearchPage from "./Componente/SearchPage/SearchPage";
 import SongForm from "./Componente/AddingPage/SongForm";
 import AddingChordsPage from "./Componente/AddingPage/AddingChordsPage";
 import SongPage from "./Componente/SongPage/SongPage";
 import SoloAuthor from "./Componente/Album/SoloAuthor";
+import Profile from "./Componente/Profile/Profile";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<SignUpPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/addingPage" element={<SongForm />} />
           <Route path="/addingChordsPage" element={<AddingChordsPage />} />
           <Route path="/songPage/:id" element={<SongPage />} />
