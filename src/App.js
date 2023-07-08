@@ -4,7 +4,6 @@ import Home from "./Componente/Home/Home";
 import AboutUs from "./Componente/AboutUs/AboutUs";
 import Contact from "./Componente/Contact/Contact";
 import LoginPage from "./Componente/Login/LoginPage";
-// import SoloAlbum from "./Componente/Album/SoloAlbum";
 import SignUpPage from "./Componente/SignUp/SignUpPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 

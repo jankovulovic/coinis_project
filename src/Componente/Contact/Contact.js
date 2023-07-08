@@ -7,7 +7,7 @@ const Contact = () => {
     <Container>
       <Row className="mb-5 mt-3">
         <Col lg="12">
-          <h1 className="display-4 mb-4">Contact me</h1>
+          <h1 className="display-4 mb-4">Contact Us</h1>
         </Col>
       </Row>
 

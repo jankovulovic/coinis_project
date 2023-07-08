@@ -1,28 +1,58 @@
-// Import necessary packages and styles
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import classes from "./SignUpPage.module.css";
 
 const SignUpPage = () => {
-  // Declare state variables for the form inputs
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  // Define a function for the form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // TODO: Send the form data to the server
+    try {
+      setIsLoading(true);
 
-    console.log(`First Name: ${firstName}`);
-    console.log(`Last Name: ${lastName}`);
-    console.log(`Email: ${email}`);
-    console.log(`Password: ${password}`);
-    console.log(`Confirm Password: ${confirmPassword}`);
+      const response = await axios.post("http://127.0.0.1:8000/api/register/", {
+        username: `${firstName} ${lastName}`,
+        email,
+        password,
+        password2: confirmPassword,
+      });
+      console.log(response.data);
+
+      setIsLoading(false);
+      setIsSuccess(true);
+    } catch (error) {
+      console.error(error.response.data);
+      setIsLoading(false);
+      setIsSuccess(false);
+    }
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isSuccess) {
+    return (
+      <div className={classes.container}>
+        {/* <h2>Sign </h2> */}
+        <h2>
+          Registration successful! You can now proceed to{" "}
+          <Link to="/login">
+            <b>Login</b>
+          </Link>
+          .
+        </h2>
+      </div>
+    );
+  }
 
   return (
     <div className={classes.container}>

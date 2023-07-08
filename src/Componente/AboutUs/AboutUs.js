@@ -1,5 +1,6 @@
 import React from "react";
 import "./AboutUs.css";
+import Contact from "../Contact/Contact";
 
 const AboutUs = () => {
   return (
@@ -56,6 +57,7 @@ const AboutUs = () => {
           </ol>
         </div>
       </div>
+      <Contact />
     </>
   );
 };

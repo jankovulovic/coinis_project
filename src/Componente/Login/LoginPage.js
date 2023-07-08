@@ -1,26 +1,34 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import classes from "./LoginPage.module.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Define a function for the form submission
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/login/", {
+        email,
+        password,
+      });
 
-    //Send the form data to the server
+      console.log(response.data);
 
-    console.log(`Email: ${email}`);
-    console.log(`Password: ${password}`);
+      localStorage.setItem("loggedIn", "true");
+      window.location.href = "/"; // Redirect to home page
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
 
   return (
     <div className={classes.container}>
       <h2>Login</h2>
 
-      <form onSubmit={handleSubmit} className={classes.loginForm}>
+      <form onSubmit={handleLogin} className={classes.loginForm}>
         <input
           type="email"
           name="email"
