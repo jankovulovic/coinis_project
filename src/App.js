@@ -8,7 +8,6 @@ import SignUpPage from "./Componente/SignUp/SignUpPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
-// import ProfilePage from "./Componente/ProfilePage/ProfilePage";
 import SearchPage from "./Componente/SearchPage/SearchPage";
 import SongForm from "./Componente/AddingPage/SongForm";
 import AddingChordsPage from "./Componente/AddingPage/AddingChordsPage";

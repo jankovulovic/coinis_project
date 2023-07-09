@@ -5,7 +5,7 @@ import "./Contact.css";
 const Contact = () => {
   return (
     <Container>
-      <Row className="mb-5 mt-3">
+      <Row>
         <Col lg="12">
           <h1 className="display-4 mb-4">Contact Us</h1>
         </Col>

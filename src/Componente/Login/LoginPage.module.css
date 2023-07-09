@@ -59,3 +59,11 @@
 .signup a:hover {
   text-decoration: none;
 }
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 95% !important;
+    margin: 50px auto;
+    padding: 100px 10px;
+  }
+}

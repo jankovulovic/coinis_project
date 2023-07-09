@@ -12,54 +12,42 @@ const Footer = () => {
   return (
     <footer>
       <div className={classes.topFooter}>
-        <div className={classes.topFooterLeft}>
-          <div className={classes.topSection}>
-            <div className={classes.title}>General</div>
-            <div className={classes.links}>
-              <Link to="/">Home</Link>
-            </div>
-            <div className={classes.links}>
-              <Link to="/aboutUs">About us</Link>
-            </div>
-            <div className={classes.links}>
-              <Link to="/search">Search</Link>
-            </div>
-            {loggedIn && (
-              <div className={classes.links}>
-                <Link to="/addingPage">Add Music</Link>
-              </div>
-            )}
+        <div className={classes.topSection}>
+          <div className={classes.title}>General</div>
+          <div className={classes.links}>
+            <Link to="/">Home</Link>
           </div>
-          <div className={classes.topSection}>
-            <div className={classes.title}>Communication</div>
-            <div className={classes.links}>
-              <Link to="/contact">Contact</Link>
-            </div>
-            <div className={classes.links}>
-              <Link to="/login">Login</Link>
-            </div>
-            <div className={classes.links}>
-              <Link to="/register">Register</Link>
-            </div>
-            {loggedIn && (
-              <div className={classes.links}>
-                <Link to="/profile">Profile settings</Link>
-              </div>
-            )}
+          <div className={classes.links}>
+            <Link to="/aboutUs">About us</Link>
           </div>
+          <div className={classes.links}>
+            <Link to="/search">Search</Link>
+          </div>
+          {loggedIn && (
+            <div className={classes.links}>
+              <Link to="/addingPage">Add Music</Link>
+            </div>
+          )}
         </div>
-        <div className={classes.topFooterRight}>
-          <div className={classes.title}>Subscribe to our Patreon</div>
-          <div className={classes.text}>
-            "Unlock the melodies, master the chords, and unleash your inner
-            guitarist."
+        <div className={classes.topSection}>
+          <div className={classes.title}>Communication</div>
+          <div className={classes.links}>
+            <Link to="/contact">Contact</Link>
           </div>
-          <div></div>
+          <div className={classes.links}>
+            <Link to="/login">Login</Link>
+          </div>
+          <div className={classes.links}>
+            <Link to="/register">Register</Link>
+          </div>
+          {loggedIn && (
+            <div className={classes.links}>
+              <Link to="/profile">Profile settings</Link>
+            </div>
+          )}
         </div>
       </div>
-      <hr></hr>
       <div className={classes.botFooter}>
-        <div>© 2023 Company, Inc. All rights reserved.</div>
         <div className={classes.botFooterIcons}>
           <div>
             <FacebookIcon fontSize="large" />
@@ -71,6 +59,7 @@ const Footer = () => {
             <InstagramIcon fontSize="large" />
           </div>
         </div>
+        <div>© 2023 Company, Inc. All rights reserved.</div>
       </div>
     </footer>
   );

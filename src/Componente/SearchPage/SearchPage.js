@@ -75,7 +75,7 @@ const SearchPage = () => {
       <div className={classes.mainOptDiv}>
         <div
           className={`${classes.mainOptOne} ${
-            filterType === "Authors" ? "active" : ""
+            filterType === "Authors" ? classes.active : ""
           }`}
           onClick={() => handleFilterChange("Authors")}
         >
@@ -83,7 +83,7 @@ const SearchPage = () => {
         </div>
         <div
           className={`${classes.mainOptTwo} ${
-            filterType === "Songs" ? "active" : ""
+            filterType === "Songs" ? classes.active : ""
           }`}
           onClick={() => handleFilterChange("Songs")}
         >

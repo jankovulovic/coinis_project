@@ -1,11 +1,11 @@
+import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
-import HalfRating from "./Rating";
-import classes from "./AlbumCard.module.css";
 import AlbumSongsList from "./ALbumSongsList";
+
+import classes from "./AlbumCard.module.css";
 
 const AlbumCard = ({ authorName, imgLink, authorId }) => {
   return (
@@ -29,7 +29,6 @@ const AlbumCard = ({ authorName, imgLink, authorId }) => {
           {authorName}
         </Typography>
       </CardContent>
-      <HalfRating />
       <AlbumSongsList authorId={authorId} />
     </Card>
   );

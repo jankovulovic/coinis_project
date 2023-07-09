@@ -22,7 +22,7 @@
   border: 3px solid black;
   border-top-left-radius: 60px;
   border-bottom-left-radius: 15px;
-  width: 15%;
+  width: 24%;
 }
 
 .mainOptTwo {
@@ -31,7 +31,7 @@
   border: 3px solid black;
   border-top-right-radius: 60px;
   border-bottom-right-radius: 15px;
-  width: 15%;
+  width: 24%;
 }
 
 .mainOptOne:hover,
@@ -71,7 +71,7 @@
   row-gap: 20px;
 }
 
-.mainOptDiv .active {
+.active {
   color: white;
   background-color: lightcoral;
   border: 3px solid white;
@@ -123,4 +123,55 @@
   color: white;
   background-color: lightcoral;
   cursor: pointer;
+}
+
+/* responsive Tablet  */
+
+@media screen and (max-width: 1800px) {
+  .filterContainer {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .filterContainer {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .formFlex {
+    width: 80%;
+  }
+  .mainOptOne,
+  .mainOptTwo {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .formFlex {
+    width: 90%;
+  }
+  .mainOptOne,
+  .mainOptTwo {
+    width: 45%;
+    font-size: 30px;
+    padding: 10px 30px;
+  }
+  .mainTitle {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .formFlex {
+    width: 98%;
+  }
+  .mainOptOne,
+  .mainOptTwo {
+    width: 49%;
+    padding: 10px 30px;
+    font-size: 20px;
+  }
 }

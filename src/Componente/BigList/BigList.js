@@ -1,8 +1,8 @@
-import classes from "./BigList.module.css";
-import { Link } from "react-router-dom";
-import AlbumCard from "../Album/AlbumCard";
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import AlbumCard from "../Album/AlbumCard";
+import classes from "./BigList.module.css";
 
 const BigList = () => {
   const [authors, setAuthors] = useState([]);
@@ -21,16 +21,14 @@ const BigList = () => {
       });
   }, []);
 
-  const loggedIn = localStorage.getItem("loggedIn") === "true";
-
   return (
     <>
       <div className={classes.container}>
         <div className={classes.quoteTitle}>Most Popular Artists</div>
-        {/* <div className={classes.filters}>
+        <div className={classes.filters}>
           <div className={classes.filterBand}>Official Bands</div>
           <div className={classes.filterSolo}>Solo Artists</div>
-        </div> */}
+        </div>
 
         <div className={classes.albums}>
           {authors.length > 0 &&
@@ -50,44 +48,6 @@ const BigList = () => {
             <div className={classes.seeAll}>See All Creators</div>
           </Link>
         </div>
-
-        {loggedIn && (
-          <>
-            <div className={classes.quoteTitle}>
-              Want to Add or Edit your own music ?
-            </div>
-            <div className={classes.addOptions}>
-              <div className={classes.addMusic}>
-                <div className={classes.optTitle}>Add your own Music.</div>
-                <div>
-                  This would be a guide for adding your own music. If you click
-                  on this button, it will lead you to the page for posting your
-                  own music. If you are not logged in, it should request that
-                  you log in as it would be foolish to allow anything if you are
-                  not logged in.
-                </div>
-                <div className={classes.linkDivs}>
-                  <Link to="/addingPage">
-                    <div className={classes.optBtn}>Button</div>
-                  </Link>
-                </div>
-              </div>
-              <div className={classes.addPlaylist}>
-                <div className={classes.optTitle}>Edit your songs.</div>
-                <div>
-                  This is still a new feature, and I have no clue what I would
-                  put here. How this will be done is questionable. Need more
-                  thinking.
-                </div>
-                <div className={classes.linkDivs}>
-                  <Link to="/list">
-                    <div className={classes.optBtn}>Button</div>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
       </div>
     </>
   );

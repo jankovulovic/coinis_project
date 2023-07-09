@@ -11,36 +11,50 @@
   align-items: center;
   gap: 20px;
   background-color: #f8f8f8;
-  opacity: 0.75;
+  opacity: 0.85;
+  background-image: url("../../Assets/login.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.signUpForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputField {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.submitBtn {
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: lightcoral;
+  cursor: pointer;
+}
+
+.login {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.login a {
+  color: lightcoral;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 95% !important;
+    margin: 50px auto;
+    padding: 100px 10px;
   }
-  
-  .signUpForm {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .inputField {
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid black;
-    border-radius: 10px;
-  }
-  
-  .submitBtn {
-    padding: 10px;
-    font-size: 20px;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    background-color: lightcoral;
-    cursor: pointer;
-  }
-  
-  
-  .login {
-    margin-top: 20px;
-    font-size: 16px;
-  }
-  
+}

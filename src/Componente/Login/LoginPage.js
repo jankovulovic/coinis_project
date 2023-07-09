@@ -28,7 +28,7 @@ const LoginPage = () => {
 
   return (
     <div className={classes.container}>
-      <h2>Login</h2>
+      <h1>Login</h1>
 
       <form onSubmit={handleLogin} className={classes.loginForm}>
         <input

@@ -10,6 +10,7 @@
 .imageContainer {
   position: relative;
   width: 100%;
+  height: 300px;
   padding-bottom: 20%;
 }
 
@@ -88,4 +89,32 @@
 .guideList li {
   font-size: 1.4rem;
   margin-bottom: 8px;
+}
+
+/* responsive */
+
+@media screen and (max-width: 400px) {
+  .overlayText {
+    top: 85%;
+    left: 5%;
+  }
+  .description {
+    font-size: 1rem;
+  }
+  .bulletList {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 10px;
+  }
+
+  .guideHeading {
+    font-size: 1.4rem;
+  }
+  .guideList {
+    margin-left: 10px;
+    padding-left: 10px;
+  }
+  .guideList li {
+    font-size: 1rem;
+  }
 }

@@ -39,3 +39,36 @@
   gap: 5px;
   width: 200px;
 }
+
+/* responsive  */
+
+@media screen and (max-width: 1400px) {
+  .songFlex {
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .songFlex {
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .songFlex {
+    width: 98%;
+  }
+  .songInfo {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .songFlex {
+    width: 98%;
+  }
+  .imgDiv {
+    height: 70px;
+    width: 70px;
+  }
+}

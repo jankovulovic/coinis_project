@@ -46,7 +46,7 @@ const SoloAlbum = () => {
             className={classes.albumImg}
             style={{
               backgroundImage: `url(${author.link})`,
-              width: "400px",
+              width: "500px",
               height: "300px",
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -59,14 +59,18 @@ const SoloAlbum = () => {
             <HalfRating />
             <div className={classes.statTable}>
               <div className={classes.statTitle}>
-                <div className={classes.stats}>Number of songs: </div>
-                <div className={classes.stats}>Genre(s): </div>
-                <div className={classes.stats}>Popularity ranking: </div>
+                <div className={classes.stats}>
+                  Number of songs: <span>21</span>
+                </div>
+                <div className={classes.stats}>Genre(s): Rock, Punk, Metal</div>
+                <div className={classes.stats}>
+                  Popularity ranking: Rank, rank
+                </div>
               </div>
               <div className={classes.statValue}>
-                <div>21</div>
-                <div>Rock, Punk, Metal</div>
-                <div>Rank, rank</div>
+                <div></div>
+                <div></div>
+                <div></div>
               </div>
             </div>
           </div>
@@ -85,7 +89,7 @@ const SoloAlbum = () => {
             PageMaker including versions of Lorem Ipsum.
           </div>
         </div>
-        <div>
+        {/* <div>
           <div className={classes.titleSec}>Tags</div>
           <div className={classes.infoTags}>
             <div className={classes.tags}>#Rock</div>
@@ -97,12 +101,13 @@ const SoloAlbum = () => {
             <div className={classes.tags}>#100+Songs</div>
             <div className={classes.tags}>#Vocalist</div>
           </div>
-        </div>
+        </div> */}
         <div>
           {/* <div className={classes.filters}>
             <div className={classes.filterBand}>Songs</div>
             <div className={classes.filterSolo}>Discussion</div>
           </div> */}
+          <div className={classes.titleSecSongs}>List of Songs</div>
           <div className={classes.songList}>
             <ListOfSongs songs={songs} />
           </div>

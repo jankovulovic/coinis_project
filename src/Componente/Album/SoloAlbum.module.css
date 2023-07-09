@@ -5,7 +5,9 @@
 .breadcrumbs {
   padding: 30px 0px;
   text-align: start;
+  font-size: 18px;
 }
+
 .breadcrumbs a:hover {
   font-weight: 700;
 }
@@ -16,11 +18,11 @@
   gap: 40px;
   width: 100%;
   margin-bottom: 50px;
-  padding-bottom: 50px;
 }
 
 .albumImg {
   border-radius: 30px;
+  min-width: 290px !important;
 }
 
 .importantInfo {
@@ -62,6 +64,15 @@
   font-size: 30px;
   letter-spacing: 1px;
   text-align: start;
+}
+
+.titleSecSongs {
+  text-decoration: underline black;
+  text-underline-offset: 10px;
+  font-size: 30px;
+  letter-spacing: 1px;
+  text-align: start;
+  margin-bottom: 30px;
 }
 
 .infoText {
@@ -164,4 +175,52 @@
   padding: 15px 5px;
   text-align: center;
   /* margin: 10px 2px; */
+}
+
+/* responsive  */
+
+@media screen and (max-width: 1400px) {
+  .container {
+    margin: 0px 10%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .container {
+    margin: 0px 5%;
+  }
+  .songList {
+    width: 98%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    margin: 0px 2%;
+  }
+  .infoContainer {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .infoContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .albumImg,
+  .importantInfo {
+    width: 95% !important;
+    max-height: fit-content;
+  }
+  .titleSec,
+  .titleSecSongs {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .songItem {
+    width: 100%;
+  }
 }
