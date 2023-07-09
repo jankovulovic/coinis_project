@@ -76,7 +76,7 @@ const Header = () => {
           <MenuIcon />
         </Dropdown.Toggle>
 
-        <Dropdown.Menu>
+        <Dropdown.Menu className={classes.dropdownPart}>
           <Dropdown.Item href="/">Home</Dropdown.Item>
           <Dropdown.Item href="/aboutUs">About Us</Dropdown.Item>
           <Dropdown.Item href="/search">Search</Dropdown.Item>

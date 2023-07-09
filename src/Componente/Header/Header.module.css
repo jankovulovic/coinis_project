@@ -63,7 +63,7 @@
   color: black !important;
   padding: 10px 13px !important;
   border: 3px solid white !important;
-  width: 158px;
+  width: 100px;
 }
 
 .menuButton:hover {
@@ -72,6 +72,10 @@
 
 .menuButton .menuIcon {
   background-color: white;
+}
+
+.dropdownPart {
+  width: 100%;
 }
 
 .loginDivMenu {
