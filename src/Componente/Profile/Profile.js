@@ -1,111 +1,178 @@
-import React, { useState, useEffect } from "react";
-import classes from "./Profile.module.css";
-import profile1 from "../../Assets/profile1.jpg";
-import profile2 from "../../Assets/profile2.jpg";
-import profile3 from "../../Assets/profile3.jpg";
-import profile4 from "../../Assets/profile4.jpg";
-import profile5 from "../../Assets/profile5.jpg";
-import profile6 from "../../Assets/profile6.jpg";
-import profile7 from "../../Assets/profile7.jpg";
-import profile8 from "../../Assets/profile8.jpg";
-import profile9 from "../../Assets/profile9.jpg";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import classes from "./Profile.module.css";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
-  const [randomImage, setRandomImage] = useState(null);
-  const [userData, setUserData] = useState(null);
-  //   const [songsData, setSongsData] = useState([]);
+  const [songs, setSongs] = useState([]);
+  const [selectedSong, setSelectedSong] = useState(null);
+  const [updatedText, setUpdatedText] = useState("");
+
+  const userId = localStorage.getItem("userId");
+  const email = localStorage.getItem("email");
+  const username = localStorage.getItem("username");
 
   useEffect(() => {
-    const profileImages = [
-      profile1,
-      profile2,
-      profile3,
-      profile4,
-      profile5,
-      profile6,
-      profile7,
-      profile8,
-      profile9,
-    ];
-
-    const randomIndex = Math.floor(Math.random() * profileImages.length);
-    const selectedImage = profileImages[randomIndex];
-    setRandomImage(selectedImage);
-  }, []);
-
-  useEffect(() => {
-    // Fetch user data
     axios
-      .get("http://127.0.0.1:8000/api/user/")
+      .get(`http://gitarist.me:8880/api/v2/songs/0/`)
       .then((response) => {
-        console.log(response);
-        const userData = response.data;
-        setUserData(userData);
-
-        // axios
-        //   .get(
-        //     `http://127.0.0.1:8000/api/v2/songs/0/?page_size=1000&user_id=${1}`
-        //   )
-        //   .then((response) => {
-        //     const songsData = response.data;
-        //     setSongsData(songsData);
-        //   })
-        //   .catch((error) => {
-        //     console.error("Error fetching songs data:", error);
-        //   });
+        const allSongs = response.data;
+        const filteredSongs = allSongs.filter(
+          (song) => song.user_id === parseInt(userId)
+        );
+        setSongs(filteredSongs);
       })
       .catch((error) => {
-        console.error("Error fetching user data:", error);
+        console.error("Error:", error);
       });
-  }, []);
+  }, [userId]);
+
+  const handleSongClick = (song) => {
+    setSelectedSong(song);
+    setUpdatedText(song.text_with_accords);
+  };
+
+  const handleTextAreaChange = (event) => {
+    setUpdatedText(event.target.value);
+  };
+
+  const handleSaveText = () => {
+    if (selectedSong) {
+      const songId = selectedSong.song_id;
+      axios
+        .put(`http://gitarist.me:8880/api/v2/songs/${songId}/`, {
+          title: selectedSong.title,
+          text_with_accords: updatedText,
+          user_id: selectedSong.user_id,
+          author_id: selectedSong.author_id,
+        })
+        .then((response) => {
+          const updatedSong = response.data;
+          const updatedSongs = songs.map((song) =>
+            song.song_id === updatedSong.song_id ? updatedSong : song
+          );
+          setSongs(updatedSongs);
+          setSelectedSong(null);
+          setUpdatedText("");
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  };
+
+  const handleDelete = () => {
+    if (selectedSong) {
+      const confirmDelete = window.confirm(
+        `Do you want to delete ${selectedSong.author_name} - ${selectedSong.title}?`
+      );
+      if (confirmDelete) {
+        const songId = selectedSong.song_id;
+        axios
+          .delete(`http://gitarist.me:8880/api/v2/songs/${songId}/`)
+          .then((response) => {
+            const updatedSongs = songs.filter(
+              (song) => song.song_id !== songId
+            );
+            setSongs(updatedSongs);
+            setSelectedSong(null);
+            setUpdatedText("");
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    }
+  };
 
   return (
-    <>
-      <div>Profile Informations</div>
-      {userData && (
-        <div>
-          <img
-            src={randomImage}
-            alt="Profile"
-            className={classes.profileImage}
-          />
-          <div>
-            <div>Email: testtest@gmail.com{userData.email}</div>
-            <div>Username: Test Test{userData.username}</div>
-            <div>Songs added: 3 </div>
-          </div>
+    <div className={classes.container}>
+      <div className={classes.containerTwo}>
+        <div className={classes.profileInfo}>
+          <div className={classes.profileTitle}>User Profile</div>
+          <div className={classes.item}>Username: {username}</div>
+          <div className={classes.item}>Email: {email}</div>
         </div>
-      )}
-      <div>List of Songs added:</div>
-      <div>
-        <Link className={classes.songFlex} to="/">
-          <div className={classes.imgDiv}>
-            <img src={profile1} alt="Profile man" />
-          </div>
-          <div className={classes.songInfo}>
-            <div className={classes.songTitle}>
-              <b>Author</b>: testong author
+
+        <div>
+          {songs.length > 0 ? (
+            <div>
+              <div className={classes.titleBig}>Songs added:</div>
+              <div className={classes.songList}>
+                {songs.map((song) => (
+                  <div
+                    key={song.song_id}
+                    className={classes.songItem}
+                    onClick={() => handleSongClick(song)}
+                  >
+                    <div className={classes.songFlex}>
+                      <div className={classes.imgDiv}>
+                        <img src={song.author_link} alt={song.author_name} />
+                      </div>
+                      <div className={classes.songInfo}>
+                        <div className={classes.songTitle}>
+                          <b>Author</b>: {song.author_name}
+                        </div>
+                        <div className={classes.songTitle}>
+                          <b>Name</b>: {song.title}
+                        </div>
+                      </div>
+                    </div>
+                    <div className={classes.realButtons}>
+                      {selectedSong === song && (
+                        <button
+                          onClick={handleDelete}
+                          className={classes.deleteBtn}
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {selectedSong && (
+                <div className={classes.formDiv}>
+                  <form className={classes.form}>
+                    <div className={classes.formItem}>
+                      <label htmlFor="title">
+                        {selectedSong.author_name} - {selectedSong.title}
+                      </label>
+                    </div>
+                    <div className={classes.formItem}>
+                      <label htmlFor="text">Text with Chords:</label>
+                      <textarea
+                        id="text"
+                        value={updatedText}
+                        onChange={handleTextAreaChange}
+                      />
+                    </div>
+                  </form>
+                  <div className={classes.buttonDiv}>
+                    <button
+                      onClick={handleSaveText}
+                      className={classes.saveButton}
+                    >
+                      Save changes
+                    </button>
+                    <button className={classes.guideButton}>
+                      <Link to="/addingPage">Look up Guide</Link>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
-            <div className={classes.songTitle}>
-              <b>Name</b>: Title test
-            </div>
-          </div>
-        </Link>
+          ) : (
+            <p>
+              You haven't added any songs yet.{" "}
+              <Link to="/addingPage">Start now?</Link>
+            </p>
+          )}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
 export default Profile;
-
-// {
-//   /* {songsData.map((song) => (
-//           <div key={song.song_id}>
-//             <img src={song.author_link} alt={song.author_name} />
-//             <div>Author: {song.author_name}</div>
-//             <div>Title: {song.title}</div>
-//           </div>
-//         ))} */
-// }

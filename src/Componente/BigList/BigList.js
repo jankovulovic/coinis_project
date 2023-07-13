@@ -6,10 +6,11 @@ import classes from "./BigList.module.css";
 
 const BigList = () => {
   const [authors, setAuthors] = useState([]);
-  const API_URL = "http://127.0.0.1:8000";
+  const API_URL = "http://gitarist.me:8880";
   const API_VERSION = "/api/v2/";
 
   useEffect(() => {
+    // console.log(API_URL + API_VERSION + `songs/authors/0/?page_size=10`);
     axios
       .get(API_URL + API_VERSION + `songs/authors/0/?page_size=10`)
       .then((response) => {

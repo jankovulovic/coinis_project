@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const AlbumSongsList = ({ authorId }) => {
   const [songs, setSongs] = useState([]);
 
-  const API_URL = "http://127.0.0.1:8000";
+  const API_URL = "http://gitarist.me:8880";
   const API_VERSION = "/api/v2/";
   const SONGS_COUNT = 3;
 

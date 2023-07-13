@@ -5,13 +5,13 @@ import classes from "./SongPage.module.css";
 const SongPage = () => {
   const { id } = useParams();
   const [song, setSong] = useState(null);
+  const API_URL = "http://gitarist.me:8880";
+  const API_VERSION = "/api/v2/";
 
   useEffect(() => {
     const fetchSong = async () => {
       try {
-        const response = await fetch(
-          `http://127.0.0.1:8000/api/v2/songs/${id}/`
-        );
+        const response = await fetch(API_URL + API_VERSION + `songs/${id}/`);
         const data = await response.json();
         setSong(data[0]);
       } catch (error) {

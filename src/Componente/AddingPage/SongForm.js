@@ -120,6 +120,7 @@ const SongForm = () => {
         setNewAuthorName("");
         setNewAuthorLink("");
         setSongText("");
+        // setSongText("");
         setIsAddingAuthor(false);
         setIsSongCreationAllowed(false);
       } else {

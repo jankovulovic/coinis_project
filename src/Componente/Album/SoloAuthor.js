@@ -9,10 +9,12 @@ const SoloAlbum = () => {
   const [author, setAuthor] = useState(null);
   const [songs, setSongs] = useState([]);
   const { id } = useParams();
+  const API_URL = "http://gitarist.me:8880";
+  const API_VERSION = "/api/v2/";
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api/v2/songs/authors/${id}/`)
+      .get(API_URL + API_VERSION + `songs/authors/${id}/`)
       .then((response) => {
         const { name, link } = response.data[0];
         setAuthor({ name, link });
@@ -22,7 +24,7 @@ const SoloAlbum = () => {
       });
 
     axios
-      .get(`http://127.0.0.1:8000/api/v2/songs/0/?author_id=${id}`)
+      .get(API_URL + API_VERSION + `songs/0/?author_id=${id}`)
       .then((response) => {
         setSongs(response.data);
       })

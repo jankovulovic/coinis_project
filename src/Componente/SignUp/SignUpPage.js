@@ -18,12 +18,15 @@ const SignUpPage = () => {
     try {
       setIsLoading(true);
 
-      const response = await axios.post("http://127.0.0.1:8000/api/register/", {
-        username: `${firstName} ${lastName}`,
-        email,
-        password,
-        password2: confirmPassword,
-      });
+      const response = await axios.post(
+        "http://gitarist.me:8880/api/register/",
+        {
+          username: `${firstName} ${lastName}`,
+          email,
+          password,
+          password2: confirmPassword,
+        }
+      );
       console.log(response.data);
 
       setIsLoading(false);

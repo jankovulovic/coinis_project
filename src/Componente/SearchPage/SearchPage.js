@@ -5,10 +5,10 @@ import classes from "./SearchPage.module.css";
 import Song from "../SearchResults/Song";
 import SearchIcon from "@mui/icons-material/Search";
 
-const API_URL = "http://127.0.0.1:8000";
-const API_VERSION = "/api/v2";
-const AUTHORS_API = API_URL + API_VERSION + "/songs/authors/0/?page_size=1000";
-const SONGS_API = API_URL + API_VERSION + "/songs/0/?page_size=1000";
+const API_URL = "http://gitarist.me:8880";
+const API_VERSION = "/api/v2/";
+const AUTHORS_API = API_URL + API_VERSION + "songs/authors/0/?page_size=1000";
+const SONGS_API = API_URL + API_VERSION + "songs/0/?page_size=1000";
 
 const SearchPage = () => {
   const [authors, setAuthors] = useState([]);
@@ -20,6 +20,9 @@ const SearchPage = () => {
   const fetchData = useCallback(
     (url) => {
       setIsLoading(true);
+      // console.log(AUTHORS_API);
+      // console.log(SONGS_API);
+
       axios
         .get(url)
         .then((response) => {

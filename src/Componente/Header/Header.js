@@ -18,7 +18,7 @@ const Header = () => {
   }, []);
 
   const handleLogout = () => {
-    const logoutUrl = "http://127.0.0.1:8000/api/logout/";
+    const logoutUrl = "http://gitarist.me:8880/api/logout/";
 
     axios
       .post(logoutUrl)

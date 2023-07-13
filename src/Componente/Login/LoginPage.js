@@ -10,17 +10,22 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/login/", {
+      const response = await axios.post("http://gitarist.me:8880/api/login/", {
         email,
         password,
       });
 
       console.log(response.data);
+      const userInfo = response.data;
+      console.log(userInfo.user_id);
 
       localStorage.setItem("loggedIn", "true");
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
-      window.location.href = "/";
+      localStorage.setItem("username", userInfo.username);
+      localStorage.setItem("userId", userInfo.user_id);
+
+      window.location.href = "/profile";
     } catch (error) {
       console.error("Login failed:", error);
     }
