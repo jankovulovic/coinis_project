@@ -198,7 +198,7 @@
 }
 
 .form textarea {
-  min-width: 500px;
+  min-width: 600px;
   margin: 10px auto 0px auto;
   border: 3px solid black;
   border-radius: 20px;
@@ -237,13 +237,13 @@
   .songItem {
     width: 100%;
   }
-}
-
-@media screen and (max-width: 600px) {
   .form textarea {
     min-width: 100%;
     font-size: 18px;
   }
+}
+
+@media screen and (max-width: 600px) {
   .containerTwo {
     width: 99%;
   }
@@ -261,6 +261,20 @@
     width: 100%;
   }
 
+  .profileTitle {
+    font-size: 40px;
+  }
+
+  .formItem label {
+    font-size: 26px;
+  }
+  .titleBig {
+    font-size: 26px;
+  }
+
+  .item {
+    font-size: 18px;
+  }
   .saveButton,
   .guideButton {
     width: 48%;
