@@ -34,12 +34,16 @@ const Footer = () => {
           <div className={classes.links}>
             <Link to="/contact">Contact</Link>
           </div>
-          <div className={classes.links}>
-            <Link to="/login">Login</Link>
-          </div>
-          <div className={classes.links}>
-            <Link to="/register">Register</Link>
-          </div>
+          {!loggedIn && (
+            <div className={classes.links}>
+              <Link to="/login">Login</Link>
+            </div>
+          )}
+          {!loggedIn && (
+            <div className={classes.links}>
+              <Link to="/register">Register</Link>
+            </div>
+          )}
           {loggedIn && (
             <div className={classes.links}>
               <Link to="/profile">Profile settings</Link>
@@ -59,7 +63,7 @@ const Footer = () => {
             <InstagramIcon fontSize="large" />
           </div>
         </div>
-        <div>© 2023 Company, Inc. All rights reserved.</div>
+        <div>© 2023 Gitarista, Inc. All rights reserved.</div>
       </div>
     </footer>
   );

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import classes from "./AuthorCard.module.css";
 
 const AuthorCard = ({ imgLink, authorName, authorId }) => {

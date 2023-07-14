@@ -18,6 +18,9 @@
   background-position: center;
 }
 
+.container h2 {
+  color: white;
+}
 .signUpForm {
   width: 100%;
   display: flex;

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import BigList from "../BigList/BigList";
+
 import classes from "./Home.module.css";
 
 const Home = () => {
@@ -29,27 +30,28 @@ const Home = () => {
             <div className={classes.addMusic}>
               <div className={classes.optTitle}>Add your own Music.</div>
               <div className={classes.text}>
-                This would be a guide for adding your own music. If you click on
-                this button, it will lead you to the page for posting your own
-                music. If you are not logged in, it should request that you log
-                in as it would be foolish to allow anything if you are not
-                logged in.
+                Welcome to our website! Here, you have the opportunity to add
+                your own music and make it a part of our collection. We're
+                thrilled to provide this platform for music enthusiasts like
+                you.
               </div>
               <div className={classes.linkDivs}>
                 <Link to="/addingPage">
-                  <div className={classes.optBtn}>Button</div>
+                  <div className={classes.optBtn}>Add Song</div>
                 </Link>
               </div>
             </div>
             <div className={classes.addPlaylist}>
               <div className={classes.optTitle}>Edit your songs.</div>
               <div className={classes.text}>
-                This is still a new feature, and I have no clue what I would put
-                here. How this will be done is questionable. Need more thinking.
+                This button will take you to your Profile page, where you'll
+                have the ability to delete or edit your songs. We encourage you
+                to carefully follow the provided guidelines to ensure a
+                harmonious experience for everyone involved.
               </div>
               <div className={classes.linkDivs}>
                 <Link to="/profile">
-                  <div className={classes.optBtn}>Button</div>
+                  <div className={classes.optBtn}>Edit Song</div>
                 </Link>
               </div>
             </div>

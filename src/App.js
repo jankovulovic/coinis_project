@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Componente/Header/Header";
 import Footer from "./Componente/Footer/Footer";
 import Home from "./Componente/Home/Home";
@@ -5,14 +6,13 @@ import AboutUs from "./Componente/AboutUs/AboutUs";
 import Contact from "./Componente/Contact/Contact";
 import LoginPage from "./Componente/Login/LoginPage";
 import SignUpPage from "./Componente/SignUp/SignUpPage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import "./App.css";
+import Profile from "./Componente/Profile/Profile";
 import SearchPage from "./Componente/SearchPage/SearchPage";
 import SongForm from "./Componente/AddingPage/SongForm";
 import SongPage from "./Componente/SongPage/SongPage";
 import SoloAuthor from "./Componente/Album/SoloAuthor";
-import Profile from "./Componente/Profile/Profile";
+
+import "./App.css";
 
 function App() {
   return (

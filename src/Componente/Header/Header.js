@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import classes from "./Header.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import Dropdown from "react-bootstrap/Dropdown";
+
+import classes from "./Header.module.css";
 
 const Header = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -18,10 +19,8 @@ const Header = () => {
   }, []);
 
   const handleLogout = () => {
-    const logoutUrl = "http://gitarist.me:8880/api/logout/";
-
     axios
-      .post(logoutUrl)
+      .post("http://gitarist.me:8880/api/logout/")
       .then((response) => {
         if (response.status === 200) {
           console.log(response);
@@ -40,9 +39,12 @@ const Header = () => {
     <>
       <div className={classes.navbar}>
         <div className={classes.logo}>
-          <Link to="/">Home</Link>
+          <Link to="/">Gitarista</Link>
         </div>
         <div className={classes.navbarItems}>
+          <div className={classes.item}>
+            <Link to="/">Home</Link>
+          </div>
           <div className={classes.item}>
             <Link to="/aboutUs">About us</Link>
           </div>

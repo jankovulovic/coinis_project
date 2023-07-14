@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import HalfRating from "./Rating";
-import classes from "./SoloAlbum.module.css";
 import ListOfSongs from "./ListOfSongs";
+import { API_URL, API_VERSION } from "../../Variables/Config";
+
+import classes from "./SoloAuthor.module.css";
 
 const SoloAlbum = () => {
   const [author, setAuthor] = useState(null);
   const [songs, setSongs] = useState([]);
   const { id } = useParams();
-  const API_URL = "http://gitarist.me:8880";
-  const API_VERSION = "/api/v2/";
 
   useEffect(() => {
     axios
@@ -62,7 +62,7 @@ const SoloAlbum = () => {
             <div className={classes.statTable}>
               <div className={classes.statTitle}>
                 <div className={classes.stats}>
-                  Number of songs: <span>21</span>
+                  Number of songs: <span>{songs.length}</span>
                 </div>
                 <div className={classes.stats}>Genre(s): Rock, Punk, Metal</div>
                 <div className={classes.stats}>
@@ -91,7 +91,7 @@ const SoloAlbum = () => {
             PageMaker including versions of Lorem Ipsum.
           </div>
         </div>
-        {/* <div>
+        <div>
           <div className={classes.titleSec}>Tags</div>
           <div className={classes.infoTags}>
             <div className={classes.tags}>#Rock</div>
@@ -103,7 +103,7 @@ const SoloAlbum = () => {
             <div className={classes.tags}>#100+Songs</div>
             <div className={classes.tags}>#Vocalist</div>
           </div>
-        </div> */}
+        </div>
         <div>
           {/* <div className={classes.filters}>
             <div className={classes.filterBand}>Songs</div>
@@ -111,7 +111,11 @@ const SoloAlbum = () => {
           </div> */}
           <div className={classes.titleSecSongs}>List of Songs</div>
           <div className={classes.songList}>
-            <ListOfSongs songs={songs} />
+            {songs.length === 0 ? (
+              <div className={classes.dummyText}>No songs were added.</div>
+            ) : (
+              <ListOfSongs songs={songs} />
+            )}
           </div>
         </div>
       </div>

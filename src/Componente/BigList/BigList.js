@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import AlbumCard from "../Album/AlbumCard";
+import { Link } from "react-router-dom";
+import ArtistCard from "../Album/ArtistCard";
+import { API_URL, API_VERSION } from "../../Variables/Config";
+
 import classes from "./BigList.module.css";
 
 const BigList = () => {
   const [authors, setAuthors] = useState([]);
-  const API_URL = "http://gitarist.me:8880";
-  const API_VERSION = "/api/v2/";
 
   useEffect(() => {
-    // console.log(API_URL + API_VERSION + `songs/authors/0/?page_size=10`);
     axios
       .get(API_URL + API_VERSION + `songs/authors/0/?page_size=10`)
       .then((response) => {
@@ -26,15 +25,15 @@ const BigList = () => {
     <>
       <div className={classes.container}>
         <div className={classes.quoteTitle}>Most Popular Artists</div>
-        <div className={classes.filters}>
+        {/* <div className={classes.filters}>
           <div className={classes.filterBand}>Official Bands</div>
           <div className={classes.filterSolo}>Solo Artists</div>
-        </div>
+        </div> */}
 
         <div className={classes.albums}>
           {authors.length > 0 &&
             authors.map((data) => (
-              <AlbumCard
+              <ArtistCard
                 key={data.id}
                 authorName={data.name}
                 imgLink={data.link}

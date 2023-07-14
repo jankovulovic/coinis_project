@@ -6,6 +6,11 @@
 html,
 body {
   font-family: "Roboto Condensed", sans-serif;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(221, 144, 118, 0.363),
+    rgb(250, 229, 229)
+  );
 }
 
 a {

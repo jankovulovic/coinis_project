@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import classes from "./Profile.module.css";
 import { Link } from "react-router-dom";
+import { API_URL, API_VERSION } from "../../Variables/Config";
+
+import classes from "./Profile.module.css";
 
 const Profile = () => {
   const [songs, setSongs] = useState([]);
@@ -14,7 +16,7 @@ const Profile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://gitarist.me:8880/api/v2/songs/0/`)
+      .get(API_URL + API_VERSION + `songs/0/`)
       .then((response) => {
         const allSongs = response.data;
         const filteredSongs = allSongs.filter(
@@ -40,7 +42,7 @@ const Profile = () => {
     if (selectedSong) {
       const songId = selectedSong.song_id;
       axios
-        .put(`http://gitarist.me:8880/api/v2/songs/${songId}/`, {
+        .put(API_URL + API_VERSION + `songs/${songId}/`, {
           title: selectedSong.title,
           text_with_accords: updatedText,
           user_id: selectedSong.user_id,
@@ -70,7 +72,7 @@ const Profile = () => {
       if (confirmDelete) {
         const songId = selectedSong.song_id;
         axios
-          .delete(`http://gitarist.me:8880/api/v2/songs/${songId}/`)
+          .delete(API_URL + API_VERSION + `songs/${songId}/`)
           .then((response) => {
             const updatedSongs = songs.filter(
               (song) => song.song_id !== songId
@@ -164,10 +166,11 @@ const Profile = () => {
               )}
             </div>
           ) : (
-            <p>
-              You haven't added any songs yet.{" "}
-              <Link to="/addingPage">Start now?</Link>
-            </p>
+            <div className={classes.startNowBtn}>
+              You haven't added any songs yet? It's gonna be simple proccess but
+              don't forget to follow the guidelines.{" "}
+              <Link to="/addingPage">Start now!</Link>
+            </div>
           )}
         </div>
       </div>

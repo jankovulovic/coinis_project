@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import AuthorSelect from "./AuthorSelect";
 import NewAuthorForm from "./NewAuthorForm";
-import classes from "./AddingPage.module.css";
+import { API_URL, API_VERSION, chords } from "../../Variables/Config";
+
+import classes from "./SongForm.module.css";
 
 const SongForm = () => {
   const [title, setTitle] = useState("");
@@ -14,6 +16,7 @@ const SongForm = () => {
   const [isAddingAuthor, setIsAddingAuthor] = useState(false);
   const [isSongCreationAllowed, setIsSongCreationAllowed] = useState(false);
   const [songText, setSongText] = useState("");
+  const textareaRef = useRef(null);
 
   useEffect(() => {
     fetchAuthors();
@@ -26,7 +29,7 @@ const SongForm = () => {
   const fetchAuthors = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/v2/songs/authors/0/?page_size=1000"
+        API_URL + API_VERSION + `songs/authors/0/?page_size=1000`
       );
       const data = response.data;
       setAuthors(data);
@@ -62,7 +65,7 @@ const SongForm = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/v2/songs/authors/0/",
+        API_URL + API_VERSION + `songs/authors/0/`,
         data
       );
 
@@ -98,18 +101,20 @@ const SongForm = () => {
       );
     }
 
+    const userId = localStorage.getItem("userId"); // Retrieve the user ID from local storage
+
     const data = {
       title,
       author_id: selectedAuthor.author_id,
       date_creation: currentDate,
       link: selectedAuthor.link,
       text_with_accords: songText,
-      user_id: 1,
+      user_id: userId, // Include the user ID in the data object
     };
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/v2/songs/0/",
+        API_URL + API_VERSION + `songs/0/`,
         data
       );
 
@@ -120,7 +125,6 @@ const SongForm = () => {
         setNewAuthorName("");
         setNewAuthorLink("");
         setSongText("");
-        // setSongText("");
         setIsAddingAuthor(false);
         setIsSongCreationAllowed(false);
       } else {
@@ -134,6 +138,33 @@ const SongForm = () => {
   const handleAddNewAuthor = () => {
     setIsAddingAuthor(true);
     setIsSongCreationAllowed(false);
+  };
+
+  const chordsByLetter = {};
+  chords.forEach((chord) => {
+    const letter = chord[0].toUpperCase();
+    if (!chordsByLetter[letter]) {
+      chordsByLetter[letter] = [];
+    }
+    chordsByLetter[letter].push(chord);
+  });
+
+  const chordButtons = Object.entries(chordsByLetter).map(
+    ([letter, chordList]) => (
+      <div key={letter}>
+        <h3>{letter}</h3>
+        {chordList.map((chord) => (
+          <button key={chord} onClick={() => handleChordSelection(chord)}>
+            {chord}
+          </button>
+        ))}
+      </div>
+    )
+  );
+
+  const handleChordSelection = (chord) => {
+    setSongText((prevSongText) => prevSongText + chord + " ");
+    textareaRef.current.focus(); // Set focus to the textarea
   };
 
   return (
@@ -167,7 +198,7 @@ const SongForm = () => {
       <form
         className={classes.container}
         onSubmit={handleSubmit}
-        autocomplete="off"
+        autoComplete="off"
       >
         <div className={classes.songInputs}>
           <label htmlFor="title">Title:</label>
@@ -211,14 +242,19 @@ const SongForm = () => {
             <input type="text" value={authorLink} disabled />
           </div>
         )}
-        <div className={classes.textInputDiv}>
-          <label htmlFor="songText">Song Text:</label>
-          <textarea
-            id="songText"
-            value={songText}
-            onChange={(e) => setSongText(e.target.value)}
-            required
-          />
+        <div className={classes.bigTitle}>Text with Chords</div>
+        <div className={classes.chordAndText}>
+          <div className={classes.chordsList}>{chordButtons}</div>
+          <div className={classes.textInputDiv}>
+            {/* <label htmlFor="songText">Song Text:</label> */}
+            <textarea
+              id="songText"
+              ref={textareaRef}
+              value={songText}
+              onChange={(e) => setSongText(e.target.value)}
+              required
+            />
+          </div>
         </div>
         <div className={classes.submitSongBtn}>
           <button type="submit" disabled={!isSongCreationAllowed}>

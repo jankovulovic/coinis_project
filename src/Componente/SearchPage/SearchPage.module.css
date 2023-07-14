@@ -23,6 +23,7 @@
   border-top-left-radius: 60px;
   border-bottom-left-radius: 15px;
   width: 24%;
+  background-color: white;
 }
 
 .mainOptTwo {
@@ -32,6 +33,7 @@
   border-top-right-radius: 60px;
   border-bottom-right-radius: 15px;
   width: 24%;
+  background-color: white;
 }
 
 .mainOptOne:hover,

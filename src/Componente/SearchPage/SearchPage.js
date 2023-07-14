@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import AuthorCard from "../SearchResults/AuthorCard";
-import classes from "./SearchPage.module.css";
 import Song from "../SearchResults/Song";
 import SearchIcon from "@mui/icons-material/Search";
+import { API_URL, API_VERSION } from "../../Variables/Config";
 
-const API_URL = "http://gitarist.me:8880";
-const API_VERSION = "/api/v2/";
+import classes from "./SearchPage.module.css";
+
 const AUTHORS_API = API_URL + API_VERSION + "songs/authors/0/?page_size=1000";
 const SONGS_API = API_URL + API_VERSION + "songs/0/?page_size=1000";
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 import classes from "./LoginPage.module.css";
 
 const LoginPage = () => {
@@ -15,9 +16,7 @@ const LoginPage = () => {
         password,
       });
 
-      console.log(response.data);
       const userInfo = response.data;
-      console.log(userInfo.user_id);
 
       localStorage.setItem("loggedIn", "true");
       localStorage.setItem("email", email);

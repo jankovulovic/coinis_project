@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import classes from "./AlbumSongsList.module.css";
 import { Link } from "react-router-dom";
+import { API_URL, API_VERSION } from "../../Variables/Config";
 
-const AlbumSongsList = ({ authorId }) => {
+import classes from "./ArtistSongsList.module.css";
+
+const ArtistSongsList = ({ authorId }) => {
   const [songs, setSongs] = useState([]);
 
-  const API_URL = "http://gitarist.me:8880";
-  const API_VERSION = "/api/v2/";
   const SONGS_COUNT = 3;
 
   useEffect(() => {
@@ -39,4 +39,4 @@ const AlbumSongsList = ({ authorId }) => {
     </div>
   );
 };
-export default AlbumSongsList;
+export default ArtistSongsList;

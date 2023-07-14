@@ -16,7 +16,7 @@
 
 .info {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   gap: 40px;
 }
@@ -30,11 +30,14 @@
   align-items: flex-start;
   padding: 15px;
   border-radius: 30px;
+  background-color: white;
 }
 
 .Title {
   font-size: 30px;
   letter-spacing: 1px;
+  text-align: center;
+  width: 100%;
 }
 
 .authorName {
@@ -53,8 +56,100 @@
   text-align: start;
   width: 100%;
   margin: 20px 0px;
-  font-size: 21px;
+  font-size: 20px;
   border: 3px solid black;
   border-radius: 30px;
   padding: 20px;
+  background-color: white;
+}
+
+.chord-modal {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.modal {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  display: none;
+}
+
+.chord-modal:hover .modal {
+  display: block;
+}
+
+.chord-modal {
+  display: none;
+  position: absolute;
+  top: -120px;
+  left: -120px;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: center;
+  z-index: 1;
+}
+
+.chord:hover .chord-modal {
+  display: block;
+}
+
+.chord-modal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scrollBtn {
+  border: 3px solid black;
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: fit-content;
+  margin: 20px auto 0px auto;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.scrollBtn:hover {
+  color: white;
+  background-color: lightcoral;
+  border: 3px solid white;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1300px) {
+  .container {
+    margin: 0px 10%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    margin: 0px 5%;
+  }
+
+  .chords {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .container {
+    margin: 0px 2%;
+  }
+  .imgDiv img {
+    width: 100% !important;
+    height: 250px !important;
+  }
+  .Title {
+    font-size: 24px;
+  }
 }

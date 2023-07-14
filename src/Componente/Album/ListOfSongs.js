@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import classes from "./SoloAlbum.module.css";
+import classes from "./SoloAuthor.module.css";
 
 const ListOfSongs = ({ songs }) => {
   return (

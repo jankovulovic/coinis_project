@@ -3,11 +3,11 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import AlbumSongsList from "./ALbumSongsList";
+import ArtistSongsList from "./ArtistSongsList";
 
-import classes from "./AlbumCard.module.css";
+import classes from "./ArtistCard.module.css";
 
-const AlbumCard = ({ authorName, imgLink, authorId }) => {
+const ArtistCard = ({ authorName, imgLink, authorId }) => {
   return (
     <Card className={classes.card}>
       <Link to={`/group/${authorId}`}>
@@ -29,9 +29,9 @@ const AlbumCard = ({ authorName, imgLink, authorId }) => {
           {authorName}
         </Typography>
       </CardContent>
-      <AlbumSongsList authorId={authorId} />
+      <ArtistSongsList authorId={authorId} />
     </Card>
   );
 };
 
-export default AlbumCard;
+export default ArtistCard;

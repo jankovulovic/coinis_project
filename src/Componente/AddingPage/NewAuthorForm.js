@@ -1,5 +1,6 @@
 import React from "react";
-import classes from "./AddingPage.module.css";
+
+import classes from "./SongForm.module.css";
 
 const NewAuthorForm = ({
   newAuthorName,

@@ -1,21 +1,20 @@
 .textInputDiv {
   font-family: "Courier New", Courier, monospace;
   padding: 10px;
-  width: 50%;
+  width: 100%;
   margin: 0px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.textInputDiv textarea {
-  text-align: start;
-}
 
 .guideTitle {
   font-size: 50px;
   text-align: center;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  /* margin-bottom: 20px; */
   margin-top: 30px;
+  border-bottom: 10px solid black;
 }
 
 .guideList {
@@ -24,6 +23,12 @@
   gap: 10px;
   align-items: center;
   margin-bottom: 50px;
+  width: 60%;
+  margin: 0px auto;
+  border: 10px solid black;
+  border-top: 0px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .guideItem {
@@ -33,27 +38,27 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 15px;
   align-items: center;
   margin-bottom: 50px;
   justify-content: space-between;
 }
 
 .songInputs {
-  width: 300px;
-  height: 70px;
+  width: 500px;
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
 .songInputs label {
-  font-size: 24px;
+  font-size: 30px;
   text-align: center;
 }
 
 .songInputs input {
   width: 100%;
-  height: 100%;
+  height: 50px;
   padding-left: 10px;
   padding: 10px;
   font-size: 18px;
@@ -61,7 +66,7 @@
 }
 
 .authorSelect {
-  width: 300px;
+  width: 500px;
   height: 50px;
   padding: 10px;
   font-size: 18px;
@@ -71,19 +76,24 @@
 .newAuthor {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
+}
+
+.newAuthor button {
+  font-size: 20px;
 }
 
 .newAuthorInputs {
-  width: 300px;
+  width: 500px;
   height: 100px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
 .newAuthorInputs label {
-  font-size: 24px;
+  font-size: 30px;
   text-align: center;
   padding: 10px;
 }
@@ -97,10 +107,11 @@
 .newAuthorDiv {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
 .newAuthorDiv label {
-  font-size: 24px;
+  font-size: 30px;
 }
 
 .newAuthorDiv button {
@@ -124,14 +135,16 @@
 }
 
 .textInputDiv textarea {
-  min-width: 600px;
-  width: 70%;
+  /* min-width: 1000px; */
+  width: 100%;
   margin: 10px auto;
   border: 3px solid black;
   border-radius: 20px;
   padding: 10px;
-  font-size: 16px;
-  height: 500px;
+  font-size: 22px;
+  height: 100%;
+  min-height: 1000px;
+  text-align: start;
 }
 
 .submitSongBtn button {
@@ -139,31 +152,97 @@
   border: 3px solid black;
   padding: 10px 20px;
   font-size: 20px;
+  background-color: green;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
 }
 .submitSongBtn button:active {
   background-color: black;
   color: white;
 }
 
+.chordsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 500px;
+}
+.chordsList button {
+  border: 1px solid black;
+  padding: 2px 5px;
+  margin: 0px 2px;
+}
+
+.chordAndText {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.bigTitle {
+  font-size: 50px;
+  border-bottom: 10px solid black;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 /* responsive */
 
-@media screen and (max-width: 1250px) {
-  .textInputDiv {
+@media screen and (max-width: 1400px) {
+  .guideList {
     width: 90%;
   }
 }
 
+@media screen and (max-width: 1250px) {
+  .textInputDiv textarea {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .chordAndText {
+    flex-direction: column;
+  }
+  .guideList {
+    width: 100%;
+    border-left: 0px;
+    border-right: 0px;
+  }
+
+  .chordsList {
+    width: 100%;
+  }
+
+  .textInputDiv textarea {
+    font-size: 20px;
+    min-height: 500px;
+  }
+}
+
 @media screen and (max-width: 700px) {
+  .chordsList {
+    display: none;
+  }
   .textInputDiv {
     padding: 0px;
   }
   .textInputDiv textarea {
     width: 100%;
     min-width: 100%;
-    font-size: 14px;
+    font-size: 18px;
     margin: 10px 0px;
   }
 
+  .bigTitle {
+    font-size: 34px;
+  }
   .guideTitle {
     font-size: 34px;
   }
@@ -184,9 +263,9 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
   .textInputDiv textarea {
-    font-size: 10px;
+    font-size: 14px;
   }
   .submitSongBtn button {
     font-size: 16px;
