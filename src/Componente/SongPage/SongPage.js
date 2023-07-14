@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { API_URL, API_VERSION, chords } from "../../Variables/Config";
+import GenericImage from "../../Assets/ArtistImage.avif";
 
 import classes from "./SongPage.module.css";
 
@@ -22,7 +23,7 @@ const formatTextWithAccords = (textWithAccords) => {
         formattedLines.push(`<span class="lyric">${line}</span>`);
       }
     } else {
-      formattedLines.push(""); // Add a blank line for empty lines
+      formattedLines.push("");
     }
   }
 
@@ -75,6 +76,22 @@ const SongPage = () => {
 
   const formattedText = formatTextWithAccords(song.text_with_accords, chords);
 
+  const backgroundImageStyle = song.author_link
+    ? {
+        backgroundImage: `url(${song.author_link})`,
+        width: "500px",
+        height: "300px",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }
+    : {
+        backgroundImage: `url(${GenericImage})`,
+        width: "500px",
+        height: "300px",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      };
+
   return (
     <div className={classes.container}>
       <div className={classes.breadcrumbs}>
@@ -84,16 +101,7 @@ const SongPage = () => {
       </div>
       <div className={classes.info}>
         <div className={classes.imgDiv}>
-          <img
-            style={{
-              backgroundImage: `url(${song.author_link})`,
-              width: "500px",
-              height: "300px",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-            alt=""
-          />
+          <img style={backgroundImageStyle} alt="" />
         </div>
         <div className={classes.infoDiv}>
           <div className={classes.Title}>

@@ -4,6 +4,7 @@ import AuthorCard from "../SearchResults/AuthorCard";
 import Song from "../SearchResults/Song";
 import SearchIcon from "@mui/icons-material/Search";
 import { API_URL, API_VERSION } from "../../Variables/Config";
+import GenericAuthorImage from "../../Assets/ArtistImage.avif";
 
 import classes from "./SearchPage.module.css";
 
@@ -20,8 +21,6 @@ const SearchPage = () => {
   const fetchData = useCallback(
     (url) => {
       setIsLoading(true);
-      // console.log(AUTHORS_API);
-      // console.log(SONGS_API);
 
       axios
         .get(url)
@@ -119,7 +118,7 @@ const SearchPage = () => {
             {authors.map((author) => (
               <AuthorCard
                 key={author.author_id}
-                imgLink={author.link}
+                imgLink={author.link || GenericAuthorImage} 
                 authorName={author.name}
                 authorId={author.author_id}
               />
@@ -135,7 +134,7 @@ const SearchPage = () => {
                 key={song.song_id}
                 authorName={song.author_name}
                 songTitle={song.title}
-                authorImg={song.author_link}
+                authorImg={song.author_link || GenericAuthorImage} 
                 songId={song.song_id}
               />
             ))}

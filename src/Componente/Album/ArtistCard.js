@@ -4,10 +4,15 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import ArtistSongsList from "./ArtistSongsList";
+import GenericImage from "../../Assets/ArtistImage.avif";
 
 import classes from "./ArtistCard.module.css";
 
 const ArtistCard = ({ authorName, imgLink, authorId }) => {
+  const handleImageError = (event) => {
+    event.target.src = GenericImage;
+  };
+
   return (
     <Card className={classes.card}>
       <Link to={`/group/${authorId}`}>
@@ -15,7 +20,8 @@ const ArtistCard = ({ authorName, imgLink, authorId }) => {
           component="img"
           alt="band image"
           height="200"
-          image={imgLink}
+          src={imgLink}
+          onError={handleImageError}
           className={classes.img}
         />
       </Link>

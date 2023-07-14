@@ -13,7 +13,6 @@ const Footer = () => {
     <footer>
       <div className={classes.topFooter}>
         <div className={classes.topSection}>
-          <div className={classes.title}>General</div>
           <div className={classes.links}>
             <Link to="/">Home</Link>
           </div>
@@ -28,9 +27,7 @@ const Footer = () => {
               <Link to="/addingPage">Add Music</Link>
             </div>
           )}
-        </div>
-        <div className={classes.topSection}>
-          <div className={classes.title}>Communication</div>
+
           <div className={classes.links}>
             <Link to="/contact">Contact</Link>
           </div>

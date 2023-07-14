@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import HalfRating from "./Rating";
 import ListOfSongs from "./ListOfSongs";
 import { API_URL, API_VERSION } from "../../Variables/Config";
+import GenericImage from "../../Assets/ArtistImage.avif";
 
 import classes from "./SoloAuthor.module.css";
 
@@ -37,6 +38,14 @@ const SoloAlbum = () => {
     return <div>Loading...</div>;
   }
 
+  const backgroundImageStyle = {
+    backgroundImage: `url(${author.link || GenericImage})`,
+    width: "500px",
+    height: "300px",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  };
+
   return (
     <>
       <div className={classes.container}>
@@ -46,13 +55,7 @@ const SoloAlbum = () => {
         <div className={classes.infoContainer}>
           <img
             className={classes.albumImg}
-            style={{
-              backgroundImage: `url(${author.link})`,
-              width: "500px",
-              height: "300px",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
+            style={backgroundImageStyle}
             alt=""
           />
 

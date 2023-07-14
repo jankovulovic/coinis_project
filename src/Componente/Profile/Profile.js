@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { API_URL, API_VERSION } from "../../Variables/Config";
+import GenericAuthorImage from "../../Assets/ArtistImage.avif"; 
 
 import classes from "./Profile.module.css";
 
@@ -110,7 +111,10 @@ const Profile = () => {
                   >
                     <div className={classes.songFlex}>
                       <div className={classes.imgDiv}>
-                        <img src={song.author_link} alt={song.author_name} />
+                        <img
+                          src={song.author_link || GenericAuthorImage} 
+                          alt={song.author_name}
+                        />
                       </div>
                       <div className={classes.songInfo}>
                         <div className={classes.songTitle}>
@@ -158,17 +162,14 @@ const Profile = () => {
                     >
                       Save changes
                     </button>
-                    <button className={classes.guideButton}>
-                      <Link to="/addingPage">Look up Guide</Link>
-                    </button>
                   </div>
                 </div>
               )}
             </div>
           ) : (
             <div className={classes.startNowBtn}>
-              You haven't added any songs yet? It's gonna be simple proccess but
-              don't forget to follow the guidelines.{" "}
+              You haven't added any songs yet? It's gonna be a simple process,
+              but don't forget to follow the guidelines.{" "}
               <Link to="/addingPage">Start now!</Link>
             </div>
           )}

@@ -76,7 +76,7 @@
 .newAuthor {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 35px;
 }
 
 .newAuthor button {
@@ -162,6 +162,18 @@
 .submitSongBtn button:active {
   background-color: black;
   color: white;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: -15px;
+}
+
+.errorAuthor {
+  color: red;
+  font-size: 14px;
+  margin-top: -15px;
 }
 
 .chordsList {

@@ -16,6 +16,8 @@ const SongForm = () => {
   const [isAddingAuthor, setIsAddingAuthor] = useState(false);
   const [isSongCreationAllowed, setIsSongCreationAllowed] = useState(false);
   const [songText, setSongText] = useState("");
+  const [titleError, setTitleError] = useState("");
+  const [authorError, setAuthorError] = useState("");
   const textareaRef = useRef(null);
 
   useEffect(() => {
@@ -44,8 +46,16 @@ const SongForm = () => {
       (author) => author.author_id === parseInt(e.target.value)
     );
     if (selectedAuthor) {
-      setAuthorLink(selectedAuthor.link);
+      if (e.target.value !== "new") {
+        setAuthorLink(selectedAuthor.link);
+      } else {
+        setAuthorLink("");
+      }
+    } else {
+      setAuthorLink("");
     }
+    setIsAddingAuthor(e.target.value === "new");
+    setAuthorError("");
   };
 
   const handleNewAuthorNameChange = (e) => {
@@ -88,6 +98,15 @@ const SongForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!title || !/^[a-zA-Z0-9]+$/.test(title)) {
+      setTitleError(
+        "Please enter a valid title with letters and numbers only."
+      );
+      return;
+    } else {
+      setTitleError("");
+    }
+
     const currentDate = new Date().toISOString();
 
     let selectedAuthor;
@@ -95,13 +114,31 @@ const SongForm = () => {
       selectedAuthor = authors.find(
         (author) => author.author_id === parseInt(authorId)
       );
+      if (
+        !selectedAuthor ||
+        !newAuthorName ||
+        !/^[a-zA-Z0-9]+$/.test(newAuthorName)
+      ) {
+        setAuthorError(
+          "Please enter a valid author name with letters and numbers only."
+        );
+        return;
+      } else {
+        setAuthorError("");
+      }
     } else {
       selectedAuthor = authors.find(
         (author) => author.author_id === parseInt(authorId)
       );
+      if (!selectedAuthor) {
+        setAuthorError("Please select an author.");
+        return;
+      } else {
+        setAuthorError("");
+      }
     }
 
-    const userId = localStorage.getItem("userId"); // Retrieve the user ID from local storage
+    const userId = localStorage.getItem("userId"); 
 
     const data = {
       title,
@@ -109,7 +146,7 @@ const SongForm = () => {
       date_creation: currentDate,
       link: selectedAuthor.link,
       text_with_accords: songText,
-      user_id: userId, // Include the user ID in the data object
+      user_id: userId,
     };
 
     try {
@@ -127,17 +164,13 @@ const SongForm = () => {
         setSongText("");
         setIsAddingAuthor(false);
         setIsSongCreationAllowed(false);
+        window.location.href = "/";
       } else {
         console.error("Failed to create song");
       }
     } catch (error) {
       console.error("Error creating song:", error);
     }
-  };
-
-  const handleAddNewAuthor = () => {
-    setIsAddingAuthor(true);
-    setIsSongCreationAllowed(false);
   };
 
   const chordsByLetter = {};
@@ -154,7 +187,11 @@ const SongForm = () => {
       <div key={letter}>
         <h3>{letter}</h3>
         {chordList.map((chord) => (
-          <button key={chord} onClick={() => handleChordSelection(chord)}>
+          <button
+            type="button"
+            key={chord}
+            onClick={() => handleChordSelection(chord)}
+          >
             {chord}
           </button>
         ))}
@@ -164,7 +201,12 @@ const SongForm = () => {
 
   const handleChordSelection = (chord) => {
     setSongText((prevSongText) => prevSongText + chord + " ");
-    textareaRef.current.focus(); // Set focus to the textarea
+    textareaRef.current.focus();
+  };
+
+  const handleTitleChange = (event) => {
+    const { value } = event.target;
+    setTitle(value);
   };
 
   return (
@@ -179,8 +221,8 @@ const SongForm = () => {
             Select the author from the dropdown list.
           </li>
           <li className={classes.guideItem}>
-            If the author is not listed, click "Add New Author" and fill in the
-            details in the form that appears.
+            If the author is not listed, fill in the details in the form that
+            appears.
           </li>
           <li className={classes.guideItem}>
             If adding chords, enter the chords followed by a space, then the
@@ -206,9 +248,10 @@ const SongForm = () => {
             type="text"
             id="title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={handleTitleChange}
             required
           />
+          {titleError && <p className={classes.error}>{titleError}</p>}
         </div>
         <div className={classes.newAuthorDiv}>
           <label htmlFor="author">Author:</label>
@@ -224,19 +267,12 @@ const SongForm = () => {
               handleNewAuthorNameChange={handleNewAuthorNameChange}
               handleNewAuthorLinkChange={handleNewAuthorLinkChange}
               handleNewAuthorSubmit={handleNewAuthorSubmit}
+              isAddingAuthor={isAddingAuthor}
             />
           )}
-          {authorId === "new" && !isAddingAuthor && (
-            <button
-              type="button"
-              onClick={handleAddNewAuthor}
-              className={classes.addNewAuthorButton}
-            >
-              Add New Author
-            </button>
-          )}
+          {authorError && <p className={classes.error}>{authorError}</p>}
         </div>
-        {authorLink && (
+        {authorId !== "" && authorId !== "new" && (
           <div className={classes.songInputs}>
             <label>Author Image Link:</label>
             <input type="text" value={authorLink} disabled />
@@ -246,7 +282,6 @@ const SongForm = () => {
         <div className={classes.chordAndText}>
           <div className={classes.chordsList}>{chordButtons}</div>
           <div className={classes.textInputDiv}>
-            {/* <label htmlFor="songText">Song Text:</label> */}
             <textarea
               id="songText"
               ref={textareaRef}
