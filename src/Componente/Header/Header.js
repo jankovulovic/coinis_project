@@ -39,7 +39,7 @@ const Header = () => {
     <>
       <div className={classes.navbar}>
         <div className={classes.logo}>
-          <Link to="/">Gitarista</Link>
+          <Link to="/">Gitarist</Link>
         </div>
         <div className={classes.navbarItems}>
           <div className={classes.item}>
