@@ -98,9 +98,9 @@ const SongForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !/^[a-zA-Z0-9]+$/.test(title)) {
+    if (!title || !/^[a-zA-Z0-9\s]+$/.test(title)) {
       setTitleError(
-        "Please enter a valid title with letters and numbers only."
+        "Please enter a valid title with letters, numbers, and spaces only."
       );
       return;
     } else {
@@ -138,7 +138,7 @@ const SongForm = () => {
       }
     }
 
-    const userId = localStorage.getItem("userId"); 
+    const userId = localStorage.getItem("userId");
 
     const data = {
       title,
