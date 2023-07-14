@@ -1,10 +1,5 @@
 .container {
-  /* background-color: lightcoral;
-  background-image: linear-gradient(
-    to top,
-    rgba(218, 166, 148, 0.363),
-    rgb(250, 229, 229)
-  ); */
+  height: 100vh;
 }
 
 .containerTwo {

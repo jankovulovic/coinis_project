@@ -16,9 +16,9 @@ const NewAuthorForm = ({
     if (isAddingAuthor) {
       if (!value) {
         setAuthorNameError("Please enter an author name.");
-      } else if (!/^[a-zA-Z0-9]+$/.test(value)) {
+      } else if (!/^[a-zA-Z0-9 ]+$/.test(value)) {
         setAuthorNameError(
-          "Please enter a valid author name with letters and numbers only."
+          "Please enter a valid author name with letters, numbers, and spaces only."
         );
       } else {
         setAuthorNameError("");
