@@ -11,10 +11,18 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://gitarist.me:8880/api/login/", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://gitarist.me:8880/api/login/",
+        {
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
 
       const userInfo = response.data;
 
