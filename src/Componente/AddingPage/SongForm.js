@@ -76,7 +76,12 @@ const SongForm = () => {
     try {
       const response = await axios.post(
         API_URL + API_VERSION + `songs/authors/0/`,
-        data
+        data,
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
       );
 
       if (response.status === 201) {
@@ -152,7 +157,12 @@ const SongForm = () => {
     try {
       const response = await axios.post(
         API_URL + API_VERSION + `songs/0/`,
-        data
+        data,
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
       );
 
       if (response.status === 201) {

@@ -18,7 +18,7 @@ const ArtistSongsList = ({ authorId }) => {
           `songs/0/?author_id=${authorId}&page_size=${SONGS_COUNT}`
       )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         const datas = response.data;
         setSongs(datas);
       })

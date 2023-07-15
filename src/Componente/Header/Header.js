@@ -20,7 +20,11 @@ const Header = () => {
 
   const handleLogout = () => {
     axios
-      .post("http://gitarist.me:8880/api/logout/")
+      .post("http://gitarist.me:8880/api/logout/", null, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      })
       .then((response) => {
         if (response.status === 200) {
           console.log(response);

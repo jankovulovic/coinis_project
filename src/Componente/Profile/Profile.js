@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { API_URL, API_VERSION } from "../../Variables/Config";
-import GenericAuthorImage from "../../Assets/ArtistImage.avif"; 
+import GenericAuthorImage from "../../Assets/ArtistImage.avif";
 
 import classes from "./Profile.module.css";
 
@@ -43,12 +43,20 @@ const Profile = () => {
     if (selectedSong) {
       const songId = selectedSong.song_id;
       axios
-        .put(API_URL + API_VERSION + `songs/${songId}/`, {
-          title: selectedSong.title,
-          text_with_accords: updatedText,
-          user_id: selectedSong.user_id,
-          author_id: selectedSong.author_id,
-        })
+        .put(
+          API_URL + API_VERSION + `songs/${songId}/`,
+          {
+            title: selectedSong.title,
+            text_with_accords: updatedText,
+            user_id: selectedSong.user_id,
+            author_id: selectedSong.author_id,
+          },
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        )
         .then((response) => {
           const updatedSong = response.data;
           const updatedSongs = songs.map((song) =>
@@ -112,7 +120,7 @@ const Profile = () => {
                     <div className={classes.songFlex}>
                       <div className={classes.imgDiv}>
                         <img
-                          src={song.author_link || GenericAuthorImage} 
+                          src={song.author_link || GenericAuthorImage}
                           alt={song.author_name}
                         />
                       </div>
