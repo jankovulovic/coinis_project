@@ -161,6 +161,9 @@ const SongForm = () => {
         {
           headers: {
             "Content-Type": "application/json",
+            "Cross-Origin-Opener-Policy": "same-origin",
+            "Access-Control-Allow-Methods":
+              "PUT, GET, HEAD, POST, DELETE, OPTIONS",
           },
         }
       );
