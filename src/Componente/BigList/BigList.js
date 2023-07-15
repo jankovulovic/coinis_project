@@ -10,15 +10,21 @@ const BigList = () => {
   const [authors, setAuthors] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(API_URL + API_VERSION + `songs/authors/0/?page_size=10`)
-      .then((response) => {
-        const datas = response.data;
-        setAuthors(datas);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    axios.get(API_URL + API_VERSION + `songs/authors/0/?page_size=10`),
+      {
+        headers: {
+          "Content-Type": "application/json", // Set the content type to JSON
+          "Access-Control-Allow-Origin": "*", // Allow requests from any origin
+          "Access-Control-Allow-Methods": "POST", // Allow POST requests
+        },
+      }
+        .then((response) => {
+          const datas = response.data;
+          setAuthors(datas);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
   }, []);
 
   return (
