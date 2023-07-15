@@ -12,11 +12,11 @@ const BigList = () => {
   useEffect(() => {
     axios
       .get(API_URL + API_VERSION + `songs/authors/0/?page_size=10`, {
-        headers: {
-          "Content-Type": "application/json", // Set the content type to JSON
-          "Access-Control-Allow-Origin": "*", // Allow requests from any origin
-          "Access-Control-Allow-Methods": "GET", // Allow GET requests
-        },
+        // headers: {
+        //   "Content-Type": "application/json", // Set the content type to JSON
+        //   "Access-Control-Allow-Origin": "*", // Allow requests from any origin
+        //   "Access-Control-Allow-Methods": "GET", // Allow GET requests
+        // },
       })
       .then((response) => {
         const datas = response.data;

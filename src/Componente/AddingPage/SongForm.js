@@ -155,15 +155,16 @@ const SongForm = () => {
     };
 
     try {
-     
-    const response = await axios.post(
+      const response = await axios.post(
         API_URL + API_VERSION + `songs/0/`,
-        data,{
-          headers: {
-            'Content-Type': 'application/json', // Set the content type to JSON
-            'Access-Control-Allow-Origin': '*', // Allow requests from any origin
-            'Access-Control-Allow-Methods': 'POST', // Allow POST requests
-          },}
+        data,
+        {
+          // headers: {
+          //   'Content-Type': 'application/json', // Set the content type to JSON
+          //   'Access-Control-Allow-Origin': '*', // Allow requests from any origin
+          //   'Access-Control-Allow-Methods': 'POST', // Allow POST requests
+          // },}
+        }
       );
 
       if (response.status === 201) {
