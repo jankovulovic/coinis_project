@@ -26,6 +26,11 @@ const SignUpPage = () => {
           email,
           password,
           password2: confirmPassword,
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
         }
       );
       console.log(response.data);
